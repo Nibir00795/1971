@@ -36,7 +36,7 @@ import UIKit
             activityIndicator.frame = CGRect(x:0, y:0, width:40, height:40)
             activityIndicator.style = UIActivityIndicatorView.Style.whiteLarge
             activityIndicator.center = CGPoint(x:loadingView.frame.size.width / 2,y: loadingView.frame.size.height / 2);
-            activityIndicator.assignColor(UIColor.JCH_RED())
+            activityIndicator.assignColor(UIColor.white)
             
             loadingView.addSubview(activityIndicator)
             container.addSubview(loadingView)

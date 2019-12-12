@@ -10,4 +10,7 @@ import UIKit
 
 class PopularVideoCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var videoImg: UIImageView!
+    @IBOutlet weak var videoTitleLabel: UILabel!
+    @IBOutlet weak var videoTimeLabel: UILabel!
 }
