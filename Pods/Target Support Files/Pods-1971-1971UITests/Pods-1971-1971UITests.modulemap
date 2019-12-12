@@ -1,0 +1,6 @@
+framework module Pods_1971_1971UITests {
+  umbrella header "Pods-1971-1971UITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

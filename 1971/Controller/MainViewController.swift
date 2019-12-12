@@ -87,6 +87,20 @@ extension MainViewController {
         }
     }
     
+    // MARK: - PREPARE SEGUE
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let sender:UIButton = sender as! UIButton
+        
+            
+            let videoPlayerVc = segue.destination as! VideoPlayerVC
+        videoPlayerVc.titleLabelText = itemArray[sender.tag].title
+        videoPlayerVc.descript = itemArray[sender.tag].datumDescription ?? "Description not found"
+        videoPlayerVc.videoURL = itemArray[sender.tag].youtube
+ 
+        
+    }
+    
     
 }
 
@@ -126,5 +140,11 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
             return cellB
         }
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let sender:UIButton = UIButton()
+        sender.tag = indexPath.row
+        self.performSegue(withIdentifier: "video", sender: sender)
     }
 }

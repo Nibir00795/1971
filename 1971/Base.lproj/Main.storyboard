@@ -516,9 +516,9 @@
                         <outlet property="popularVideoCollectionView" destination="7t3-4D-T3p" id="nhe-mX-YHY"/>
                         <outlet property="recentVideoCollectionView" destination="5wo-TS-yUg" id="mrZ-5t-IWA"/>
                         <segue destination="0gU-uS-PhE" kind="show" identifier="videoVC" id="iFj-eb-jTL"/>
-                        <segue destination="thf-mu-vaM" kind="show" identifier="audioVC" id="8FV-U2-6rW"/>
                         <segue destination="htm-Vf-gLL" kind="show" identifier="docVC" id="AIT-Tq-nbj"/>
                         <segue destination="LJp-7x-7Bd" kind="show" identifier="photoVC" id="4wQ-0V-JzU"/>
+                        <segue destination="1lR-z6-oyF" kind="show" identifier="video" id="w6G-5o-2Iq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -541,21 +541,109 @@
             </objects>
             <point key="canvasLocation" x="994" y="-126"/>
         </scene>
-        <!--Audio View Controller-->
-        <scene sceneID="Uje-KV-0Gt">
+        <!--Video PlayerVC-->
+        <scene sceneID="BZ2-Qg-eXD">
             <objects>
-                <viewController id="thf-mu-vaM" customClass="AudioViewController" customModule="_971" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gKc-ys-Bnf">
+                <viewController id="1lR-z6-oyF" customClass="VideoPlayerVC" customModule="_971" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5uL-aU-fAP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPu-7b-HJ6" customClass="YouTubePlayerView" customModule="YouTubePlayer">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="224"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="224" id="RNN-zt-QpZ"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="00C-43-Y5R">
+                                <rect key="frame" x="0.0" y="224" width="320" height="324"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="myA-QO-7d9">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="324"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTw-7L-dHN">
+                                                <rect key="frame" x="24" y="24" width="227" height="16.5"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xao-UV-ljP">
+                                                <rect key="frame" x="271" y="20" width="25" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="VAN-nS-C3V"/>
+                                                    <constraint firstAttribute="width" constant="25" id="u7i-WC-6tp"/>
+                                                </constraints>
+                                                <state key="normal" image="share"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Kk-Qc-jVt">
+                                                <rect key="frame" x="24" y="64.5" width="272" height="14"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yXG-D7-d4o">
+                                                <rect key="frame" x="24" y="98.5" width="272" height="201.5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="cTw-7L-dHN" firstAttribute="leading" secondItem="myA-QO-7d9" secondAttribute="leading" constant="24" id="631-uD-q44"/>
+                                            <constraint firstItem="cTw-7L-dHN" firstAttribute="top" secondItem="myA-QO-7d9" secondAttribute="top" constant="24" id="IbR-o2-pja"/>
+                                            <constraint firstAttribute="trailing" secondItem="yXG-D7-d4o" secondAttribute="trailing" constant="24" id="U4h-Ew-VLw"/>
+                                            <constraint firstAttribute="bottom" secondItem="yXG-D7-d4o" secondAttribute="bottom" constant="24" id="Vh8-Ua-Acz"/>
+                                            <constraint firstItem="yXG-D7-d4o" firstAttribute="leading" secondItem="3Kk-Qc-jVt" secondAttribute="leading" id="ZAS-eF-hvO"/>
+                                            <constraint firstItem="Xao-UV-ljP" firstAttribute="leading" secondItem="cTw-7L-dHN" secondAttribute="trailing" constant="20" id="bCu-bG-etE"/>
+                                            <constraint firstAttribute="trailing" secondItem="3Kk-Qc-jVt" secondAttribute="trailing" constant="24" id="c1S-nJ-sOK"/>
+                                            <constraint firstItem="yXG-D7-d4o" firstAttribute="top" secondItem="3Kk-Qc-jVt" secondAttribute="bottom" constant="20" id="cFu-C4-OrN"/>
+                                            <constraint firstAttribute="trailing" secondItem="Xao-UV-ljP" secondAttribute="trailing" constant="24" id="eVb-IQ-v9w"/>
+                                            <constraint firstItem="yXG-D7-d4o" firstAttribute="leading" secondItem="myA-QO-7d9" secondAttribute="leading" constant="24" id="mRP-uD-hk4"/>
+                                            <constraint firstItem="Xao-UV-ljP" firstAttribute="centerY" secondItem="cTw-7L-dHN" secondAttribute="centerY" id="smv-JG-yLK"/>
+                                            <constraint firstItem="3Kk-Qc-jVt" firstAttribute="leading" secondItem="cTw-7L-dHN" secondAttribute="leading" id="wu2-9a-s88"/>
+                                            <constraint firstItem="3Kk-Qc-jVt" firstAttribute="top" secondItem="cTw-7L-dHN" secondAttribute="bottom" constant="24" id="xyd-6M-cm7"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="myA-QO-7d9" firstAttribute="height" secondItem="00C-43-Y5R" secondAttribute="height" id="9Im-sU-BSf"/>
+                                    <constraint firstAttribute="trailing" secondItem="myA-QO-7d9" secondAttribute="trailing" constant="212.5" id="RbE-lp-NEN"/>
+                                    <constraint firstItem="myA-QO-7d9" firstAttribute="width" secondItem="00C-43-Y5R" secondAttribute="width" id="jOL-Mr-GcC"/>
+                                    <constraint firstItem="myA-QO-7d9" firstAttribute="leading" secondItem="00C-43-Y5R" secondAttribute="leading" id="sfg-pW-Adt"/>
+                                    <constraint firstItem="myA-QO-7d9" firstAttribute="top" secondItem="00C-43-Y5R" secondAttribute="top" id="uJw-tW-7CS"/>
+                                    <constraint firstAttribute="bottom" secondItem="myA-QO-7d9" secondAttribute="bottom" constant="20" id="xdg-4F-3Ip"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="1Rb-1p-rj6"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="RnV-Q6-rWR"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="xCj-Y2-zE1"/>
+                        <constraints>
+                            <constraint firstItem="kPu-7b-HJ6" firstAttribute="top" secondItem="DhW-q3-0pt" secondAttribute="top" id="0mI-Yp-RIv"/>
+                            <constraint firstItem="00C-43-Y5R" firstAttribute="bottom" secondItem="DhW-q3-0pt" secondAttribute="bottom" id="D3j-Wz-XwR"/>
+                            <constraint firstItem="kPu-7b-HJ6" firstAttribute="leading" secondItem="DhW-q3-0pt" secondAttribute="leading" id="gln-H4-Zeh"/>
+                            <constraint firstItem="00C-43-Y5R" firstAttribute="top" secondItem="kPu-7b-HJ6" secondAttribute="bottom" id="ozn-ae-MDq"/>
+                            <constraint firstAttribute="trailing" secondItem="00C-43-Y5R" secondAttribute="trailing" id="s94-NP-vFd"/>
+                            <constraint firstItem="kPu-7b-HJ6" firstAttribute="trailing" secondItem="DhW-q3-0pt" secondAttribute="trailing" id="tKr-wI-y7C"/>
+                            <constraint firstItem="00C-43-Y5R" firstAttribute="leading" secondItem="DhW-q3-0pt" secondAttribute="leading" id="w4U-A1-svS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DhW-q3-0pt"/>
                     </view>
-                    <navigationItem key="navigationItem" id="uPC-vV-vKn"/>
+                    <navigationItem key="navigationItem" id="GjD-ZI-720"/>
+                    <connections>
+                        <outlet property="descripLabel" destination="3Kk-Qc-jVt" id="k9n-VH-CFR"/>
+                        <outlet property="descriptText" destination="yXG-D7-d4o" id="Cbd-Od-99a"/>
+                        <outlet property="titleLabel" destination="cTw-7L-dHN" id="Lvc-h0-skY"/>
+                        <outlet property="videoPlayer" destination="kPu-7b-HJ6" id="k6e-R1-hUw"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jwm-Ud-hxz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4SQ-k4-HW0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="994" y="559"/>
+            <point key="canvasLocation" x="150" y="1104.9295774647887"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="yMx-Vb-BZl">
@@ -579,6 +667,7 @@
         <image name="doc" width="13.5" height="18"/>
         <image name="img" width="16" height="16"/>
         <image name="menu" width="24" height="24"/>
+        <image name="share" width="9" height="9"/>
         <image name="vedio" width="17" height="19"/>
     </resources>
 </document>

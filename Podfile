@@ -7,6 +7,7 @@ target '1971' do
 
   # Pods for 1971
 	pod 'SDWebImage', '~> 5.0'
+	pod 'YouTubePlayer'
 
   target '1971Tests' do
     inherit! :search_paths
