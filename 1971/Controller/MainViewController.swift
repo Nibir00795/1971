@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 class MainViewController: UIViewController {
-
+    
     @IBOutlet weak var popularVideoCollectionView: UICollectionView!
     @IBOutlet weak var recentVideoCollectionView: UICollectionView!
     
@@ -25,18 +25,12 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getPopularVideoList()
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         
     }
-    
-
-   
-
 }
 
 
@@ -49,17 +43,17 @@ extension MainViewController {
             
             DispatchQueue.main.async {
                 
-                let param = [
-                    "api_token" : "www",
-                    "page" : "0"
-                ]
+                let param = ["api_token" : "www", "page" : "0"]
                 self.activity.showLoading(uiView: self.view)
                 APICall.shared.callPost(url: URL(string: RECENT_VIDEO)!, httpMethodType: "POST", params: param, finish: self.finishPost)
                 self.activity.hide(uiView: self.view)
             }
         } else {
+            DispatchQueue.main.async {
+                self.activity.hide(uiView: self.view)
+                ToastView.shared.long(self.view, txt_msg: "No Internet")
+            }
             
-            ToastView.shared.long(self.view, txt_msg: "No Internet")
             
         }
     }
@@ -92,12 +86,12 @@ extension MainViewController {
         
         let sender:UIButton = sender as! UIButton
         
-            
-            let videoPlayerVc = segue.destination as! VideoPlayerVC
+        
+        let videoPlayerVc = segue.destination as! VideoPlayerVC
         videoPlayerVc.titleLabelText = itemArray[sender.tag].title
         videoPlayerVc.descript = itemArray[sender.tag].datumDescription ?? "Description not found"
         videoPlayerVc.videoURL = itemArray[sender.tag].youtube
- 
+        
         
     }
     
@@ -110,7 +104,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             return itemArray.count
         }
-
+        
         return itemArray.count
     }
     
@@ -125,19 +119,16 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
             return cellA
         }
-
+            
         else {
             let cellB = collectionView.dequeueReusableCell(withReuseIdentifier: "recentCell", for: indexPath) as! RecentVideoCollectionViewCell
-
+            
             cellB.videoTitleLabel.text = itemArray[indexPath.row].title
             cellB.videoTimeLabel.text = Converter.timeString(time: TimeInterval(Int(itemArray[indexPath.row].duration)!))
             let urlString = "\(imgBasePath)\(itemArray[indexPath.row].imageName)"
             if let url = URL(string: urlString) {
-                self.activity.showLoading(uiView: self.view)
-                cellB.videoImg.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
-                self.activity.hide(uiView: self.view)
-            }
-
+                cellB.videoImg.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))            }
+            
             return cellB
         }
     }

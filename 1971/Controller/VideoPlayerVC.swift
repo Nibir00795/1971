@@ -10,7 +10,7 @@ import UIKit
 import YouTubePlayer
 
 class VideoPlayerVC: UIViewController {
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descripLabel: UILabel!
     @IBOutlet weak var descriptText: UITextView!
@@ -25,20 +25,15 @@ class VideoPlayerVC: UIViewController {
         descripLabel.text = "Description"
         descriptText.text = descript
         let myVideoURL = NSURL(string: videoURL)
-        videoPlayer.loadVideoURL(myVideoURL! as URL)
-
-        // Do any additional setup after loading the view.
+        if Reachability.isConnectedToNetwork() {
+            videoPlayer.loadVideoURL(myVideoURL! as URL)
+            
+        } else {
+            DispatchQueue.main.async {
+                ToastView.shared.short(self.view, txt_msg:"No Internet")
+                ActivityIndicator().hide(uiView: self.view)
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -7,24 +7,50 @@
 //
 
 import UIKit
+import SwipeMenuViewController
 
-class VideoViewController: UIViewController {
-
+class VideoViewController: UIViewController, SwipeMenuViewDelegate{
+    
+    
+    
+    @IBOutlet weak var swipeMenuView: SwipeMenuView!
+    @IBOutlet weak var videotableView: UITableView!
+    
+    var itemArray = ["News", "Doccuments", "Song"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        swipeMenuView.dataSource = self
+        swipeMenuView.delegate = self
+        
+        var options: SwipeMenuViewOptions = .init()
+        options.tabView.style = .flexible
+        options.tabView.margin = 20.0
+        options.tabView.additionView.backgroundColor = UIColor(red: 7.0, green: 10.0, blue: 51.0, alpha: 1.0) //UIColor.black//UIColor.customUnderlineColor
+        options.tabView.itemView.textColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.27)
+        options.tabView.itemView.selectedTextColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 1.0) //UIColor.black//UIColor.customSelectedTextColor
+     //   options.tabView.itemView.font = UIFont(name: "Roboto-Medium", size: 11)!
+        
+        swipeMenuView.reloadData(options: options)
+    }
+}
 
-        // Do any additional setup after loading the view.
+
+extension VideoViewController: SwipeMenuViewDataSource  {
+    func swipeMenuView(_ swipeMenuView: SwipeMenuView, viewControllerForPageAt index: Int) -> UIViewController {
+    //    let vc = VideoPlayerVC()
+     //   return vc
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func swipeMenuView(_ swipeMenuView: SwipeMenuView, titleForPageAt index: Int) -> String {
+        return itemArray[index]
     }
-    */
-
+    
+    
+    
+    func numberOfPages(in swipeMenuView: SwipeMenuView) -> Int {
+        return itemArray.count
+    }
+    
+    
 }
