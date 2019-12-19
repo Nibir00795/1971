@@ -13,6 +13,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var popularVideoCollectionView: UICollectionView!
     @IBOutlet weak var recentVideoCollectionView: UICollectionView!
+    @IBOutlet weak var videoView: CardView!
     
     
     var videoTitleArray = [String]()
@@ -25,11 +26,19 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getPopularVideoList()
+        let tapGestureForRCGroupSelection =  UITapGestureRecognizer(target: self, action: #selector (someAction(sender:)))
+        tapGestureForRCGroupSelection.numberOfTapsRequired = 1
+        videoView.addGestureRecognizer(tapGestureForRCGroupSelection)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         
+    }
+    
+    
+    @objc func someAction(sender: AnyObject){
+        performSegue(withIdentifier: "videoVC", sender: UIButton())
     }
 }
 
@@ -85,12 +94,15 @@ extension MainViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let sender:UIButton = sender as! UIButton
-        
-        
+        if segue.identifier == "videoVC" {
+        let viewController = segue.destination as! VideoViewController
+        }
+        else if segue.identifier == "video" {
         let videoPlayerVc = segue.destination as! VideoPlayerVC
         videoPlayerVc.titleLabelText = itemArray[sender.tag].title
         videoPlayerVc.descript = itemArray[sender.tag].datumDescription ?? "Description not found"
         videoPlayerVc.videoURL = itemArray[sender.tag].youtube
+        }
         
         
     }

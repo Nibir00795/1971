@@ -14,6 +14,7 @@ class VideoViewController: UIViewController, SwipeMenuViewDelegate{
     
     
     @IBOutlet weak var swipeMenuView: SwipeMenuView!
+    @IBOutlet weak var backButton: UIButton!
     
     
     var itemArray = [CategoryList]()
@@ -40,6 +41,10 @@ class VideoViewController: UIViewController, SwipeMenuViewDelegate{
         
         swipeMenuView.reloadData(options: options)
     }
+    @IBAction func backButtonEvent(_ sender: Any) {
+        print("called")
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 
@@ -47,19 +52,13 @@ extension VideoViewController: SwipeMenuViewDataSource  {
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, viewControllerForPageAt index: Int) -> UIViewController {
         
         
-        let vc = VideoListViewController()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "VideoListViewController") as! VideoListViewController
+        vc.preferredContentSize = swipeMenuView.bounds.size
         addChild(vc)
-        if index == 0 {
+        
             vc.catId = itemArray[index].id
-        }else if index == 1 {
-            vc.catId = itemArray[index].id
-        }else if index == 2 {
-            vc.catId = itemArray[index].id
-        } else {
-            vc.catId = "18"
-        }
-        vc.catId = itemArray[index].id
-
+        
         return vc
     }
     
@@ -77,6 +76,9 @@ extension VideoViewController: SwipeMenuViewDataSource  {
 }
 
 extension VideoViewController {
+    
+    
+    
     func getCategoryList(){
         
         if(Reachability.isConnectedToNetwork()) {

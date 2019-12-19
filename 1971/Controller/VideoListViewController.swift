@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import SDWebImage
 
 class VideoListViewController: UIViewController {
     
     @IBOutlet weak var videoListTableView: UITableView!
     var videoInfoArray = [VideoInfo]()
     let activity = ActivityIndicator()
+    let imgBasePath = "http://glazeitsolutions.com/admin/public/uploads/"
     var catId = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getVideoByCategory(category: catId)
-        print("id id", videoInfoArray)
+        
 
     }
     
@@ -28,14 +30,26 @@ class VideoListViewController: UIViewController {
 
 extension VideoListViewController : UITableViewDelegate, UITableViewDataSource {
     
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return videoInfoArray.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! VideoListTableViewCell
         cell.videoTitleLabel.text = videoInfoArray[indexPath.row].title
-        print("fvjkdfv", videoInfoArray[indexPath.row].title)
+        cell.videoTimeLabel.text = Converter.timeString(time: TimeInterval(Int(videoInfoArray[indexPath.row].duration)!))
+        let urlString = "\(imgBasePath)\(videoInfoArray[indexPath.row].imageName)"
+        if let url = URL(string: urlString) {
+//            cell.thumbImg.layer.cornerRadius = cell.thumbImg.frame.width/16.0
+//            cell.thumbImg.layer.masksToBounds = true
+            cell.thumbImg.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
+        }
         return cell
     }
     
@@ -77,6 +91,9 @@ extension VideoListViewController {
                 let parsedData = try JSONDecoder().decode(VideoByCategory.self, from: jsonData)
                 self.videoInfoArray.append(contentsOf: parsedData.data)
                   print("parsedData1", parsedData.data)
+                DispatchQueue.main.async {
+                    self.videoListTableView.reloadData()
+                }
             }
         }
         catch

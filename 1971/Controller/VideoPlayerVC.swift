@@ -15,6 +15,7 @@ class VideoPlayerVC: UIViewController {
     @IBOutlet weak var descripLabel: UILabel!
     @IBOutlet weak var descriptText: UITextView!
     @IBOutlet var videoPlayer: YouTubePlayerView!
+    @IBOutlet weak var backButton: UIButton!
     var titleLabelText = String()
     var descript = String()
     var videoURL = String()
@@ -36,4 +37,8 @@ class VideoPlayerVC: UIViewController {
         }
     }
     
+    @IBAction func backButtonEvent(_ sender: Any) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
 }
