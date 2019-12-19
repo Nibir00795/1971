@@ -52,6 +52,11 @@ extension VideoListViewController : UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sender:UIButton = UIButton()
+        sender.tag = indexPath.row
+        self.performSegue(withIdentifier: "videoPlayer", sender: sender)
+    }
     
     
     
@@ -60,6 +65,20 @@ extension VideoListViewController : UITableViewDelegate, UITableViewDataSource {
 
 
 extension VideoListViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let sender:UIButton = sender as! UIButton
+        if segue.identifier == "videoPlayer" {
+        let videoPlayerVc = segue.destination as! VideoPlayerVC
+        videoPlayerVc.titleLabelText = videoInfoArray[sender.tag].title
+        videoPlayerVc.descript = videoInfoArray[sender.tag].datumDescription ?? "Description not found"
+        videoPlayerVc.videoURL = videoInfoArray[sender.tag].youtube
+        }
+        
+        
+    }
+    
     func getVideoByCategory(category: String){
         
         if(Reachability.isConnectedToNetwork()) {

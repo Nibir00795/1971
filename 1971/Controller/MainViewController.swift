@@ -97,7 +97,7 @@ extension MainViewController {
         if segue.identifier == "videoVC" {
         let viewController = segue.destination as! VideoViewController
         }
-        else if segue.identifier == "video" {
+        else if segue.identifier == "videoPlayer" {
         let videoPlayerVc = segue.destination as! VideoPlayerVC
         videoPlayerVc.titleLabelText = itemArray[sender.tag].title
         videoPlayerVc.descript = itemArray[sender.tag].datumDescription ?? "Description not found"
@@ -148,6 +148,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         let sender:UIButton = UIButton()
         sender.tag = indexPath.row
-        self.performSegue(withIdentifier: "video", sender: sender)
+        self.performSegue(withIdentifier: "videoPlayer", sender: sender)
     }
 }

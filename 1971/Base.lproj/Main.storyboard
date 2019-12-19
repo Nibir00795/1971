@@ -522,7 +522,7 @@
                         <segue destination="0gU-uS-PhE" kind="show" identifier="videoVC" id="iFj-eb-jTL"/>
                         <segue destination="htm-Vf-gLL" kind="show" identifier="docVC" id="AIT-Tq-nbj"/>
                         <segue destination="LJp-7x-7Bd" kind="show" identifier="photoVC" id="4wQ-0V-JzU"/>
-                        <segue destination="1lR-z6-oyF" kind="show" identifier="video" id="w6G-5o-2Iq"/>
+                        <segue destination="1lR-z6-oyF" kind="show" identifier="videoPlayer" id="w6G-5o-2Iq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -676,46 +676,41 @@
                     </view>
                     <connections>
                         <outlet property="videoListTableView" destination="v4P-QU-gDp" id="86H-8m-R5E"/>
+                        <segue destination="1lR-z6-oyF" kind="show" identifier="videoPlayer" id="Zcc-62-SAP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZb-wd-g7y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2568.8000000000002" y="-143.47826086956522"/>
+            <point key="canvasLocation" x="2049" y="618"/>
         </scene>
         <!--Video PlayerVC-->
         <scene sceneID="BZ2-Qg-eXD">
             <objects>
                 <viewController id="1lR-z6-oyF" customClass="VideoPlayerVC" customModule="_971" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5uL-aU-fAP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPu-7b-HJ6" customClass="YouTubePlayerView" customModule="YouTubePlayer">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="264"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCf-lS-2Lf">
-                                        <rect key="frame" x="20" y="20" width="25" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="25" id="VzC-pg-53Q"/>
-                                            <constraint firstAttribute="height" constant="25" id="dTv-DS-EtT"/>
-                                        </constraints>
-                                        <state key="normal" image="back"/>
-                                        <connections>
-                                            <action selector="backButtonEvent:" destination="1lR-z6-oyF" eventType="touchUpInside" id="nHu-2u-7vj"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="256"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="QCf-lS-2Lf" firstAttribute="top" secondItem="kPu-7b-HJ6" secondAttribute="top" constant="20" id="28Y-4e-GcW"/>
-                                    <constraint firstItem="QCf-lS-2Lf" firstAttribute="leading" secondItem="kPu-7b-HJ6" secondAttribute="leading" constant="20" id="b2E-jj-mZq"/>
-                                </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCf-lS-2Lf">
+                                <rect key="frame" x="24" y="24" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="VzC-pg-53Q"/>
+                                    <constraint firstAttribute="height" constant="25" id="dTv-DS-EtT"/>
+                                </constraints>
+                                <state key="normal" image="back"/>
+                                <connections>
+                                    <action selector="backButtonEvent:" destination="1lR-z6-oyF" eventType="touchUpInside" id="nHu-2u-7vj"/>
+                                </connections>
+                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="00C-43-Y5R">
-                                <rect key="frame" x="0.0" y="264" width="375" height="403"/>
+                                <rect key="frame" x="0.0" y="256" width="375" height="391"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="myA-QO-7d9">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="391"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTw-7L-dHN">
                                                 <rect key="frame" x="24" y="24" width="282" height="16.5"/>
@@ -738,7 +733,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yXG-D7-d4o">
-                                                <rect key="frame" x="24" y="98.5" width="327" height="280.5"/>
+                                                <rect key="frame" x="24" y="98.5" width="327" height="268.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -780,6 +775,8 @@
                         <constraints>
                             <constraint firstItem="kPu-7b-HJ6" firstAttribute="top" secondItem="DhW-q3-0pt" secondAttribute="top" id="0mI-Yp-RIv"/>
                             <constraint firstItem="00C-43-Y5R" firstAttribute="bottom" secondItem="DhW-q3-0pt" secondAttribute="bottom" id="D3j-Wz-XwR"/>
+                            <constraint firstItem="QCf-lS-2Lf" firstAttribute="leading" secondItem="DhW-q3-0pt" secondAttribute="leading" constant="24" id="VMx-qu-sHe"/>
+                            <constraint firstItem="QCf-lS-2Lf" firstAttribute="top" secondItem="DhW-q3-0pt" secondAttribute="top" constant="24" id="dgw-cP-6tQ"/>
                             <constraint firstItem="kPu-7b-HJ6" firstAttribute="leading" secondItem="DhW-q3-0pt" secondAttribute="leading" id="gln-H4-Zeh"/>
                             <constraint firstItem="00C-43-Y5R" firstAttribute="top" secondItem="kPu-7b-HJ6" secondAttribute="bottom" id="ozn-ae-MDq"/>
                             <constraint firstAttribute="trailing" secondItem="00C-43-Y5R" secondAttribute="trailing" id="s94-NP-vFd"/>
@@ -800,7 +797,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SQ-k4-HW0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="150" y="1104.9295774647887"/>
+            <point key="canvasLocation" x="149.59999999999999" y="1104.1979010494754"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="yMx-Vb-BZl">
@@ -845,4 +842,7 @@
         <image name="share" width="9" height="9"/>
         <image name="vedio" width="17" height="19"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Zcc-62-SAP"/>
+    </inferredMetricsTieBreakers>
 </document>
