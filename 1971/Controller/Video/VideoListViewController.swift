@@ -46,8 +46,8 @@ extension VideoListViewController : UITableViewDelegate, UITableViewDataSource {
         cell.videoTimeLabel.text = Converter.timeString(time: TimeInterval(Int(videoInfoArray[indexPath.row].duration)!))
         let urlString = "\(imgBasePath)\(videoInfoArray[indexPath.row].imageName)"
         if let url = URL(string: urlString) {
-//            cell.thumbImg.layer.cornerRadius = cell.thumbImg.frame.width/16.0
-//            cell.thumbImg.layer.masksToBounds = true
+            cell.thumbImg.layer.cornerRadius = cell.thumbImg.frame.width/16.0
+            cell.thumbImg.layer.masksToBounds = true
             cell.thumbImg.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
         }
         return cell
@@ -87,7 +87,7 @@ extension VideoListViewController {
                 
                 let param = ["api_token" : "www", "page" : "0", "category" : category]
                 self.activity.showLoading(uiView: self.view)
-                APICall.shared.callPost(url: URL(string: VIDEO_BY_CATEGORY)!, httpMethodType: "POST", params: param, finish: self.videoByCat)
+                APICall.shared.callPost(url: URL(string: API_VIDEO_BY_CATEGORY)!, httpMethodType: "POST", params: param, finish: self.videoByCat)
                 self.activity.hide(uiView: self.view)
             }
         } else {

@@ -1,5 +1,5 @@
 //
-//  VideoViewController.swift
+//  PhotoViewController.swift
 //  1971
 //
 //  Created by Mobioapp on 11/12/19.
@@ -9,7 +9,7 @@
 import UIKit
 import SwipeMenuViewController
 
-class VideoViewController: UIViewController, SwipeMenuViewDelegate{
+class PhotoViewController: UIViewController, SwipeMenuViewDelegate{
     
     
     
@@ -17,8 +17,8 @@ class VideoViewController: UIViewController, SwipeMenuViewDelegate{
     @IBOutlet weak var backButton: UIButton!
     
     
-    var itemArray = [CategoryList]()
-    var videoInfoArray = [VideoInfo]()
+    var photoItemArray = [PhotoCategory]()
+    var photoInfoArray = [photoInfo]()
     let activity = ActivityIndicator()
     
     
@@ -28,7 +28,7 @@ class VideoViewController: UIViewController, SwipeMenuViewDelegate{
         swipeMenuView.dataSource = self
         swipeMenuView.delegate = self
 
-        getCategoryList()
+        getPhotoCategoryList()
         var options: SwipeMenuViewOptions = .init()
         options.tabView.style = .flexible
         options.tabView.margin = 20.0
@@ -37,7 +37,7 @@ class VideoViewController: UIViewController, SwipeMenuViewDelegate{
         options.tabView.itemView.selectedTextColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 1.0)
         options.tabView.additionView.underline.height = 0.0
         //UIColor.black//UIColor.customSelectedTextColor
-        options.tabView.itemView.font = UIFont(name: "Roboto-Medium", size: 11)!
+        options.tabView.itemView.font = UIFont(name: "Roboto-Medium", size: 18)!
         
         swipeMenuView.reloadData(options: options)
     }
@@ -47,39 +47,38 @@ class VideoViewController: UIViewController, SwipeMenuViewDelegate{
     }
 }
 
-
-extension VideoViewController: SwipeMenuViewDataSource  {
+extension PhotoViewController: SwipeMenuViewDataSource  {
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, viewControllerForPageAt index: Int) -> UIViewController {
         
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "VideoListViewController") as! VideoListViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "PhotoListViewController") as! PhotoListViewController
         vc.preferredContentSize = swipeMenuView.bounds.size
         addChild(vc)
         
-            vc.catId = itemArray[index].id
+        vc.catId = photoItemArray[index].imgCatID
         
         return vc
     }
     
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, titleForPageAt index: Int) -> String {
-        return itemArray[index].title
+        return photoItemArray[index].catName
     }
     
     
     
     func numberOfPages(in swipeMenuView: SwipeMenuView) -> Int {
-        return itemArray.count
+        return photoItemArray.count
     }
     
     
 }
 
-extension VideoViewController {
+extension PhotoViewController {
     
     
     
-    func getCategoryList(){
+    func getPhotoCategoryList(){
         
         if(Reachability.isConnectedToNetwork()) {
             
@@ -87,7 +86,7 @@ extension VideoViewController {
                 
                 let param = ["api_token" : "www"]
                 self.activity.showLoading(uiView: self.view)
-                APICall.shared.callPost(url: URL(string: CATEGORY_LIST)!, httpMethodType: "POST", params: param, finish: self.finishPost)
+                APICall.shared.callPost(url: URL(string: API_IMAGE_CATEGORY_LIST)!, httpMethodType: "POST", params: param, finish: self.finishPPost)
                 self.activity.hide(uiView: self.view)
             }
         } else {
@@ -101,7 +100,7 @@ extension VideoViewController {
     }
     
 
-    func finishPost (message:String, data:Data?) -> Void
+    func finishPPost (message:String, data:Data?) -> Void
     {
         do
         {
@@ -109,11 +108,11 @@ extension VideoViewController {
                 
             {
                 print("jsondata", jsonData)
-                let parsedData = try JSONDecoder().decode(VideoCategory.self, from: jsonData)
-                self.itemArray.append(contentsOf: parsedData.data)
+                let parsedData = try JSONDecoder().decode(PhotoCategoryList.self, from: jsonData)
+                self.photoItemArray.append(contentsOf: parsedData.data)
                 DispatchQueue.main.async {
                     self.swipeMenuView.reloadData()
-                }
+                } 
               
                 
             }

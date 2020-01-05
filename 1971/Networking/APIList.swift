@@ -11,8 +11,19 @@ var basePath                                              = "http://glazeitsolut
 
 
 
-public let RECENT_VIDEO                            = "\(basePath)/admin/public/api/video/recent.php"
-public let CATEGORY_LIST                            = "\(basePath)/admin/public/api/category/all.php"
-public let VIDEO_BY_CATEGORY                            = "\(basePath)/admin/public/api/video/by-category.php"
+public let API_RECENT_VIDEO                            = "\(basePath)/admin/public/api/video/recent.php"
 
+//video
+public let API_VIDEO_CATEGORY_LIST                            = "\(basePath)/admin/public/api/category/all.php"
+public let API_VIDEO_BY_CATEGORY                            = "\(basePath)/admin/public/api/video/by-category.php"
 
+//image
+public let API_IMAGE_CATEGORY_LIST  = "\(basePath)/admin/public/api/category/image-category.php"
+public let API_IMAGE_BY_CATEGORY                            = "\(basePath)/admin/public/api/image/by-category.php"
+
+//audio
+public let API_AUDIO_CATEGORY_LIST  = "\(basePath)/admin/public/api/category/audio-category.php"
+
+//doc
+public let API_DOC_CATEGORY_LIST  = "\(basePath)/admin/public/api/category/document-category.php"
+public let API_DOC_BY_CATEGORY                            = "\(basePath)/admin/public/api/document/by-category.php"
