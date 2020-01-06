@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		054A35007F6214105007DB70 /* Pods_1971_1971UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0080EA3F252C5F2CBB9AA7C6 /* Pods_1971_1971UITests.framework */; };
 		47E74BF6FC15BCFF0F335377 /* Pods_1971.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B80D06E66C4CD8BDAEA536D1 /* Pods_1971.framework */; };
+		9610F64F23C35DA600ED65F2 /* AudioListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9610F64E23C35DA600ED65F2 /* AudioListTableViewCell.swift */; };
+		9610F65123C370E500ED65F2 /* AudioPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9610F65023C370E500ED65F2 /* AudioPlayerVC.swift */; };
 		963A438A23A12D96003E78DF /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A438923A12D96003E78DF /* VideoViewController.swift */; };
 		963A438C23A12DF2003E78DF /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A438B23A12DF2003E78DF /* AudioViewController.swift */; };
 		963A438E23A12E05003E78DF /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963A438D23A12E05003E78DF /* PhotoViewController.swift */; };
@@ -78,6 +80,8 @@
 		11F9985060BFE07028BB5380 /* Pods-1971.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-1971.debug.xcconfig"; path = "Target Support Files/Pods-1971/Pods-1971.debug.xcconfig"; sourceTree = "<group>"; };
 		560C154CDB2F26EAE7376367 /* Pods-1971Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-1971Tests.release.xcconfig"; path = "Target Support Files/Pods-1971Tests/Pods-1971Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8741A14F5033B8327774E2DE /* Pods-1971Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-1971Tests.debug.xcconfig"; path = "Target Support Files/Pods-1971Tests/Pods-1971Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		9610F64E23C35DA600ED65F2 /* AudioListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioListTableViewCell.swift; sourceTree = "<group>"; };
+		9610F65023C370E500ED65F2 /* AudioPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerVC.swift; sourceTree = "<group>"; };
 		963A438923A12D96003E78DF /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		963A438B23A12DF2003E78DF /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		963A438D23A12E05003E78DF /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
@@ -283,6 +287,7 @@
 			children = (
 				964A07F623AA60C40074CD37 /* VideoListTableViewCell.swift */,
 				BA778A1A23B66AB200F34E9F /* DocListTableViewCell.swift */,
+				9610F64E23C35DA600ED65F2 /* AudioListTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -402,6 +407,7 @@
 			isa = PBXGroup;
 			children = (
 				963A438B23A12DF2003E78DF /* AudioViewController.swift */,
+				9610F65023C370E500ED65F2 /* AudioPlayerVC.swift */,
 				BA98FE0C23B46E1E00121535 /* AudioListViewController.swift */,
 			);
 			path = Audio;
@@ -684,6 +690,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9610F64F23C35DA600ED65F2 /* AudioListTableViewCell.swift in Sources */,
 				964A07F923AA669F0074CD37 /* VideoByCategory.swift in Sources */,
 				BA6632CF23AD142700A3AF31 /* PhotoCollectionViewCell.swift in Sources */,
 				963A43B223A14C36003E78DF /* ToastView.swift in Sources */,
@@ -701,6 +708,7 @@
 				BA0DD85D23B3E6BF009B496D /* CustomView.swift in Sources */,
 				963A438A23A12D96003E78DF /* VideoViewController.swift in Sources */,
 				9652C6DA239D30C800DE15FD /* SceneDelegate.swift in Sources */,
+				9610F65123C370E500ED65F2 /* AudioPlayerVC.swift in Sources */,
 				963A438C23A12DF2003E78DF /* AudioViewController.swift in Sources */,
 				963A439023A12E15003E78DF /* DocViewController.swift in Sources */,
 				963A439623A13274003E78DF /* CardView.swift in Sources */,
@@ -895,7 +903,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NLMQ56W2VQ;
+				DEVELOPMENT_TEAM = J27N355HBH;
 				INFOPLIST_FILE = 1971/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -917,7 +925,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NLMQ56W2VQ;
+				DEVELOPMENT_TEAM = J27N355HBH;
 				INFOPLIST_FILE = 1971/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (

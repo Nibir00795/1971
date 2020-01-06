@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import SVProgressHUD
 
 class MainViewController: UIViewController {
     
@@ -28,6 +29,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         getPopularVideoList()
         let tapGestureVideo =  UITapGestureRecognizer(target: self, action: #selector (videoAction(sender:)))
         let tapGestureAudio =  UITapGestureRecognizer(target: self, action: #selector (audioAction(sender:)))
@@ -78,13 +80,14 @@ extension MainViewController {
     func getPopularVideoList(){
         
         if(Reachability.isConnectedToNetwork()) {
-            
+            //SVProgressHUD.show()
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www", "page" : "0"]
-                self.activity.showLoading(uiView: self.view)
+                
                 APICall.shared.callPost(url: URL(string: API_RECENT_VIDEO)!, httpMethodType: "POST", params: param, finish: self.finishPost)
-                self.activity.hide(uiView: self.view)
+                
+                
             }
         } else {
             DispatchQueue.main.async {
@@ -97,6 +100,7 @@ extension MainViewController {
     }
     func finishPost (message:String, data:Data?) -> Void
     {
+        
         do
         {
             if let jsonData = data
@@ -108,6 +112,7 @@ extension MainViewController {
                 DispatchQueue.main.async {
                     self.popularVideoCollectionView.reloadData()
                     self.recentVideoCollectionView.reloadData()
+                  //  SVProgressHUD.dismiss()
                 }
                 print("parsedData", parsedData.data)
                 

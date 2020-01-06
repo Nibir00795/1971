@@ -23,6 +23,7 @@ public let API_IMAGE_BY_CATEGORY                            = "\(basePath)/admin
 
 //audio
 public let API_AUDIO_CATEGORY_LIST  = "\(basePath)/admin/public/api/category/audio-category.php"
+public let API_AUDIO_BY_CATEGORY  = "\(basePath)/admin/public/api/audio/by-category.php"
 
 //doc
 public let API_DOC_CATEGORY_LIST  = "\(basePath)/admin/public/api/category/document-category.php"

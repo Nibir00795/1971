@@ -2,25 +2,29 @@ PODS:
   - SDWebImage (5.4.0):
     - SDWebImage/Core (= 5.4.0)
   - SDWebImage/Core (5.4.0)
+  - SVProgressHUD (2.2.5)
   - SwipeMenuViewController (4.0.0)
   - YouTubePlayer (0.4.0)
 
 DEPENDENCIES:
   - SDWebImage (~> 5.0)
+  - SVProgressHUD
   - SwipeMenuViewController
   - YouTubePlayer
 
 SPEC REPOS:
   trunk:
     - SDWebImage
+    - SVProgressHUD
     - SwipeMenuViewController
     - YouTubePlayer
 
 SPEC CHECKSUMS:
   SDWebImage: 5bf6aec6481ae2a062bdc59f9d6c1d1e552090e0
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwipeMenuViewController: c2c1f9b62022ce6b904b2553f0fa340c9008becd
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: 386d3a1d1067b2c8029bb3b5231de810c3e64edd
+PODFILE CHECKSUM: 4faca1c2fed72d92868581943634b5149e5a0543
 
 COCOAPODS: 1.8.4

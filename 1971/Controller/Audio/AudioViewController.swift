@@ -56,7 +56,7 @@ extension AudioViewController: SwipeMenuViewDataSource  {
         vc.preferredContentSize = swipeMenuView.bounds.size
         addChild(vc)
         
-        //vc.catId = AudioItemArray[index].id
+        vc.catId = audioItemArray[index].catID
         
         return vc
     }

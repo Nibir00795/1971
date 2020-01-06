@@ -9,6 +9,7 @@ target '1971' do
 	pod 'SDWebImage', '~> 5.0'
 	pod 'YouTubePlayer'
 	pod 'SwipeMenuViewController'
+  pod 'SVProgressHUD'
 
   target '1971Tests' do
     inherit! :search_paths
