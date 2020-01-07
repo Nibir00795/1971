@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 import SVProgressHUD
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, MenuViewControllerDelegate {
     
     @IBOutlet weak var popularVideoCollectionView: UICollectionView!
     @IBOutlet weak var recentVideoCollectionView: UICollectionView!
@@ -25,6 +25,8 @@ class MainViewController: UIViewController {
     var displayImg = UIImage()
     let imgBasePath = "http://glazeitsolutions.com/admin/public/uploads/"
     var tapIndex = Int()
+    var blurView = UIView()
+    var menuViewController = MenuViewController()
     let activity = ActivityIndicator()
     
     override func viewDidLoad() {
@@ -69,6 +71,117 @@ class MainViewController: UIViewController {
         
             performSegue(withIdentifier: "photoVC", sender: UIButton())
         
+    }
+    @IBAction func menuButtonEventListener(_ sender: Any) {
+        
+        if #available(iOS 13.0, *) {
+            if AppDelegate.menu_bool {
+                self.showMenu()
+            } else {
+                self.closeMenu()
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+    func createSlideMenu () {
+        
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        menuViewController = mainStoryboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        self.menuViewController.view.frame = CGRect(x: -UIScreen.main.bounds.width, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        menuViewController.delegateManager = self
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.gestureToRespond))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.gestureToRespond))
+        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
+        
+        self.view.addGestureRecognizer(swipeRight)
+        self.view.addGestureRecognizer(swipeLeft)
+    }
+    
+    @objc func gestureToRespond(gesture: UISwipeGestureRecognizer) {
+        
+        switch gesture.direction {
+        case UISwipeGestureRecognizer.Direction.right:
+            showMenu()
+            
+        case UISwipeGestureRecognizer.Direction.left:
+            closeOnSwipe()
+        default:
+            break
+        }
+        
+    }
+    func closeOnSwipe() {
+        
+        if #available(iOS 13.0, *) {
+            if AppDelegate.menu_bool {
+                //showMenu()
+            } else {
+                closeMenu()
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+    func showMenu() {
+        //
+        self.blurView.isHidden = false
+        UIView.animate(withDuration: 0.5, animations: {
+            
+            self.menuViewController.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            self.addChild(self.menuViewController)
+            self.view.addSubview(self.menuViewController.view)
+            if #available(iOS 13.0, *) {
+                AppDelegate.menu_bool = false
+            } else {
+                // Fallback on earlier versions
+            }
+            
+        }) { (value) in
+            
+            if value{
+                // self.blureView.isHidden = false
+                print("ok");
+            }
+            
+        }
+    }
+    
+    func closeMenu() {
+        
+        self.blurView.isHidden = true
+        
+        UIView.animate(withDuration: 0.5, animations: { ()->Void in
+            
+            self.menuViewController.view.frame = CGRect(x: -UIScreen.main.bounds.width, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            if #available(iOS 13.0, *) {
+                AppDelegate.menu_bool = true
+            } else {
+                // Fallback on earlier versions
+            }
+        })
+        
+    }
+    
+    func leftMenuCellClicked() {
+        self.closeMenu()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if  blurView.isHidden == false {
+            
+            if ((menuViewController.view) != nil) {
+                
+                self.blurView.isHidden = true
+                self.closeMenu()
+            }
+        }
     }
 
 }

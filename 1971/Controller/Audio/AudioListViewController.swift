@@ -62,8 +62,8 @@ extension AudioListViewController {
         let sender:UIButton = sender as! UIButton
         if segue.identifier == "audioPlayer" {
         let audioPlayerVc = segue.destination as! AudioPlayerVC
-            audioPlayerVc.audioTitle = audioInfoArray[sender.tag].audioTitle
-            audioPlayerVc.imgUrl = audioInfoArray[sender.tag].audioImg
+            audioPlayerVc.index = sender.tag
+            audioPlayerVc.catId = catId
         }
         
         
