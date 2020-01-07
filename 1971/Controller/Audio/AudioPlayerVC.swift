@@ -161,9 +161,9 @@ extension AudioPlayerVC {
                 
                 let mySecs2 = Int(time) % 60
                 
-                if(mySecs2 == 1){//show title of song after 1 second
+                //if(mySecs2 == 1){//show title of song after 1 second
                     self.audioTitleLabel.text = self.audioInfoArray[self.index].audioTitle;
-                }
+                //}
                 let myMins2 = Int(time / 60)
                 
                 let myTimes2 = String(myMins2) + ":" + String(mySecs2);
