@@ -74,7 +74,7 @@ extension AudioListViewController {
     func getAudioByCategory(category: String){
         
         if(Reachability.isConnectedToNetwork()) {
-            SVProgressHUD.show()
+        //    SVProgressHUD.show()
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www", "page" : "0", "cat_id" : category]
@@ -82,7 +82,7 @@ extension AudioListViewController {
             }
         } else {
             DispatchQueue.main.async {
-                SVProgressHUD.dismiss()
+             //   SVProgressHUD.dismiss()
                 ToastView.shared.long(self.view, txt_msg: "No Internet")
             }
             
@@ -102,7 +102,7 @@ extension AudioListViewController {
                   print("parsedData1", parsedData.data)
                 DispatchQueue.main.async {
                     self.audioListTableView.reloadData()
-                    SVProgressHUD.dismiss()
+                 //   SVProgressHUD.dismiss()
                 }
             }
         }

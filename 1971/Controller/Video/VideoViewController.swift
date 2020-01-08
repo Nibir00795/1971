@@ -81,7 +81,7 @@ extension VideoViewController {
     func getCategoryList(){
         
         if(Reachability.isConnectedToNetwork()) {
-            SVProgressHUD.show()
+       //     SVProgressHUD.show()
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www"]
@@ -89,7 +89,7 @@ extension VideoViewController {
             }
         } else {
             DispatchQueue.main.async {
-                SVProgressHUD.dismiss()
+             //   SVProgressHUD.dismiss()
                 ToastView.shared.long(self.view, txt_msg: "No Internet")
             }
             
@@ -110,7 +110,7 @@ extension VideoViewController {
                 self.itemArray.append(contentsOf: parsedData.data)
                 DispatchQueue.main.async {
                     self.swipeMenuView.reloadData()
-                    SVProgressHUD.dismiss()
+                //    SVProgressHUD.dismiss()
                 }
               
                 

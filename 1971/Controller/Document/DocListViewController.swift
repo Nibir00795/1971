@@ -81,7 +81,7 @@ extension DocListViewController {
     func getDocByCategory(category: String){
         
         if(Reachability.isConnectedToNetwork()) {
-            SVProgressHUD.show()
+         //   SVProgressHUD.show()
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www", "cat_id" : category]
@@ -89,7 +89,7 @@ extension DocListViewController {
             }
         } else {
             DispatchQueue.main.async {
-                SVProgressHUD.dismiss()
+             //   SVProgressHUD.dismiss()
                 ToastView.shared.long(self.view, txt_msg: "No Internet")
             }
             
@@ -109,7 +109,7 @@ extension DocListViewController {
                   print("parsedData1", parsedData.data)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
-                    SVProgressHUD.dismiss()
+               //     SVProgressHUD.dismiss()
                 }
             }
         }

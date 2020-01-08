@@ -82,7 +82,7 @@ extension PhotoViewController {
     func getPhotoCategoryList(){
         
         if(Reachability.isConnectedToNetwork()) {
-            SVProgressHUD.show()
+         //   SVProgressHUD.show()
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www"]
@@ -91,7 +91,7 @@ extension PhotoViewController {
             }
         } else {
             DispatchQueue.main.async {
-                SVProgressHUD.dismiss()
+             //   SVProgressHUD.dismiss()
                 ToastView.shared.long(self.view, txt_msg: "No Internet")
             }
             
@@ -112,7 +112,7 @@ extension PhotoViewController {
                 self.photoItemArray.append(contentsOf: parsedData.data)
                 DispatchQueue.main.async {
                     self.swipeMenuView.reloadData()
-                    SVProgressHUD.dismiss()
+               //     SVProgressHUD.dismiss()
                 } 
               
                 

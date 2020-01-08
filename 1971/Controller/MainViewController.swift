@@ -193,7 +193,7 @@ extension MainViewController {
     func getPopularVideoList(){
         
         if(Reachability.isConnectedToNetwork()) {
-            SVProgressHUD.show()
+         //   SVProgressHUD.show()
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www", "page" : "0"]
@@ -204,7 +204,7 @@ extension MainViewController {
             }
         } else {
             DispatchQueue.main.async {
-                self.activity.hide(uiView: self.view)
+                
                 ToastView.shared.long(self.view, txt_msg: "No Internet")
             }
             
@@ -225,7 +225,7 @@ extension MainViewController {
                 DispatchQueue.main.async {
                     self.popularVideoCollectionView.reloadData()
                     self.recentVideoCollectionView.reloadData()
-                   SVProgressHUD.dismiss()
+                 //  SVProgressHUD.dismiss()
                 }
                 print("parsedData", parsedData.data)
                 
