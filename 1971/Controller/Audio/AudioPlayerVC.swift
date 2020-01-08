@@ -8,6 +8,8 @@
 
 import UIKit
 import AVFoundation
+import SDWebImage
+import SVProgressHUD
 
 class AudioPlayerVC: UIViewController {
     
@@ -34,7 +36,6 @@ class AudioPlayerVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        playSlider.minimumValue = 0
         playSlider.tintColor = UIColor.green
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -81,10 +82,9 @@ class AudioPlayerVC: UIViewController {
             player!.pause()
             player = nil
             
-            setPlayer();
+            setPlayer()
             if player?.rate == 0
             {
-                audioTitleLabel.text = "Song Loading...";//NOT WORKING
                 player!.play()
                 playBtn.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
                 
@@ -114,6 +114,7 @@ extension AudioPlayerVC {
         if let url = URL(string: urlString) {
             audioThumbImg.layer.cornerRadius = audioThumbImg.frame.width/16.0
             audioThumbImg.layer.masksToBounds = true
+            audioThumbImg.sd_imageIndicator = SDWebImageActivityIndicator.white
             audioThumbImg.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
         }
         
@@ -139,7 +140,7 @@ extension AudioPlayerVC {
         let myTimes = String(myMins) + ":" + String(mySecs);
         endDur.text = myTimes;
         
-        
+        playSlider.minimumValue = 0
         playSlider.maximumValue = Float(seconds)
         playSlider.isContinuous = false
         playSlider.tintColor = UIColor.green
@@ -162,7 +163,7 @@ extension AudioPlayerVC {
                 let mySecs2 = Int(time) % 60
                 
                 //if(mySecs2 == 1){//show title of song after 1 second
-                    self.audioTitleLabel.text = self.audioInfoArray[self.index].audioTitle;
+                    self.audioTitleLabel.text = self.audioInfoArray[self.index].audioTitle
                 //}
                 let myMins2 = Int(time / 60)
                 
@@ -196,7 +197,7 @@ extension AudioPlayerVC {
     func getAudioByCategory(category: String){
         
         if(Reachability.isConnectedToNetwork()) {
-            
+            SVProgressHUD.show()
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www", "page" : "0", "cat_id" : category]
@@ -204,6 +205,7 @@ extension AudioPlayerVC {
             }
         } else {
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
                 ToastView.shared.long(self.view, txt_msg: "No Internet")
             }
             
@@ -223,6 +225,7 @@ extension AudioPlayerVC {
                 print("parsedData1", parsedData.data)
                 DispatchQueue.main.async {
                     self.setPlayer()
+                    SVProgressHUD.dismiss()
                 }
                 
             }

@@ -32,7 +32,6 @@ class VideoPlayerVC: UIViewController {
         } else {
             DispatchQueue.main.async {
                 ToastView.shared.short(self.view, txt_msg:"No Internet")
-                ActivityIndicator().hide(uiView: self.view)
             }
         }
     }

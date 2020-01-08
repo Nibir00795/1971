@@ -193,7 +193,7 @@ extension MainViewController {
     func getPopularVideoList(){
         
         if(Reachability.isConnectedToNetwork()) {
-            //SVProgressHUD.show()
+            SVProgressHUD.show()
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www", "page" : "0"]
@@ -225,7 +225,7 @@ extension MainViewController {
                 DispatchQueue.main.async {
                     self.popularVideoCollectionView.reloadData()
                     self.recentVideoCollectionView.reloadData()
-                  //  SVProgressHUD.dismiss()
+                   SVProgressHUD.dismiss()
                 }
                 print("parsedData", parsedData.data)
                 
@@ -277,6 +277,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cellA.videoTimeLabel.text = Converter.timeString(time: TimeInterval(Int(itemArray[indexPath.row].duration)!))
             let urlString = "\(imgBasePath)\(itemArray[indexPath.row].imageName)"
             if let url = URL(string: urlString) {
+                cellA.videoImg.sd_imageIndicator = SDWebImageActivityIndicator.white
                 cellA.videoImg.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
             }
             return cellA
@@ -289,6 +290,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cellB.videoTimeLabel.text = Converter.timeString(time: TimeInterval(Int(itemArray[indexPath.row].duration)!))
             let urlString = "\(imgBasePath)\(itemArray[indexPath.row].imageName)"
             if let url = URL(string: urlString) {
+                cellB.videoImg.sd_imageIndicator = SDWebImageActivityIndicator.white
                 cellB.videoImg.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))            }
             
             return cellB

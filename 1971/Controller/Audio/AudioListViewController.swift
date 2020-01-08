@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import SVProgressHUD
+import SDWebImage
 class AudioListViewController: UIViewController {
 
     @IBOutlet weak var audioListTableView: UITableView!
@@ -39,6 +40,7 @@ extension AudioListViewController : UITableViewDelegate, UITableViewDataSource {
         if let url = URL(string: urlString) {
             cell.audioThumbImage.layer.cornerRadius = cell.audioThumbImage.frame.width/16.0
             cell.audioThumbImage.layer.masksToBounds = true
+            cell.audioThumbImage.sd_imageIndicator = SDWebImageActivityIndicator.white
             cell.audioThumbImage.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
         }
         return cell
@@ -72,7 +74,7 @@ extension AudioListViewController {
     func getAudioByCategory(category: String){
         
         if(Reachability.isConnectedToNetwork()) {
-            
+            SVProgressHUD.show()
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www", "page" : "0", "cat_id" : category]
@@ -80,6 +82,7 @@ extension AudioListViewController {
             }
         } else {
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
                 ToastView.shared.long(self.view, txt_msg: "No Internet")
             }
             
@@ -99,6 +102,7 @@ extension AudioListViewController {
                   print("parsedData1", parsedData.data)
                 DispatchQueue.main.async {
                     self.audioListTableView.reloadData()
+                    SVProgressHUD.dismiss()
                 }
             }
         }

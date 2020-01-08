@@ -8,6 +8,7 @@
 
 import UIKit
 import SwipeMenuViewController
+import SVProgressHUD
 
 class DocViewController: UIViewController, SwipeMenuViewDelegate{
     
@@ -81,18 +82,16 @@ extension DocViewController {
     func getCategoryList(){
         
         if(Reachability.isConnectedToNetwork()) {
-            
+            SVProgressHUD.show()
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www"]
-                self.activity.showLoading(uiView: self.view)
                 APICall.shared.callPost(url: URL(string: API_DOC_CATEGORY_LIST)!, httpMethodType: "POST", params: param, finish: self.finishDPost)
-                self.activity.hide(uiView: self.view)
                 //here man
             }
         } else {
             DispatchQueue.main.async {
-                self.activity.hide(uiView: self.view)
+                SVProgressHUD.dismiss()
                 ToastView.shared.long(self.view, txt_msg: "No Internet")
             }
             
@@ -113,6 +112,7 @@ extension DocViewController {
                 self.docItemArray.append(contentsOf: parsedData.data)
                 DispatchQueue.main.async {
                     self.swipeMenuView.reloadData()
+                    SVProgressHUD.dismiss()
                 }
               
                 

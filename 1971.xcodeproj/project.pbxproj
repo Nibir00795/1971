@@ -223,6 +223,7 @@
 				963C3C6623C4891C00EADE9B /* MainViewController.swift */,
 				963C3C6823C48EAB00EADE9B /* Menu */,
 				BA0DD85B23B3D333009B496D /* Audio */,
+				BA0DD85823B3D2ED009B496D /* Video */,
 				BA0DD85A23B3D32A009B496D /* Document */,
 				BA0DD85923B3D306009B496D /* Photo */,
 			);
@@ -422,7 +423,6 @@
 		BA0DD85A23B3D32A009B496D /* Document */ = {
 			isa = PBXGroup;
 			children = (
-				BA0DD85823B3D2ED009B496D /* Video */,
 				963A438F23A12E15003E78DF /* DocViewController.swift */,
 				BAE1C00B23B6125500372DA1 /* DocListViewController.swift */,
 			);

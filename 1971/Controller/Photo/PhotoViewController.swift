@@ -8,6 +8,7 @@
 
 import UIKit
 import SwipeMenuViewController
+import SVProgressHUD
 
 class PhotoViewController: UIViewController, SwipeMenuViewDelegate{
     
@@ -81,17 +82,16 @@ extension PhotoViewController {
     func getPhotoCategoryList(){
         
         if(Reachability.isConnectedToNetwork()) {
-            
+            SVProgressHUD.show()
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www"]
-                self.activity.showLoading(uiView: self.view)
                 APICall.shared.callPost(url: URL(string: API_IMAGE_CATEGORY_LIST)!, httpMethodType: "POST", params: param, finish: self.finishPPost)
-                self.activity.hide(uiView: self.view)
+                
             }
         } else {
             DispatchQueue.main.async {
-                self.activity.hide(uiView: self.view)
+                SVProgressHUD.dismiss()
                 ToastView.shared.long(self.view, txt_msg: "No Internet")
             }
             
@@ -112,6 +112,7 @@ extension PhotoViewController {
                 self.photoItemArray.append(contentsOf: parsedData.data)
                 DispatchQueue.main.async {
                     self.swipeMenuView.reloadData()
+                    SVProgressHUD.dismiss()
                 } 
               
                 

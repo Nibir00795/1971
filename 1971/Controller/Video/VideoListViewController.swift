@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import SVProgressHUD
 
 class VideoListViewController: UIViewController {
     
@@ -48,6 +49,7 @@ extension VideoListViewController : UITableViewDelegate, UITableViewDataSource {
         if let url = URL(string: urlString) {
             cell.thumbImg.layer.cornerRadius = cell.thumbImg.frame.width/16.0
             cell.thumbImg.layer.masksToBounds = true
+            cell.thumbImg.sd_imageIndicator = SDWebImageActivityIndicator.white
             cell.thumbImg.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
         }
         return cell
@@ -82,17 +84,15 @@ extension VideoListViewController {
     func getVideoByCategory(category: String){
         
         if(Reachability.isConnectedToNetwork()) {
-            
+            SVProgressHUD.show()
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www", "page" : "0", "category" : category]
-                self.activity.showLoading(uiView: self.view)
                 APICall.shared.callPost(url: URL(string: API_VIDEO_BY_CATEGORY)!, httpMethodType: "POST", params: param, finish: self.videoByCat)
-                self.activity.hide(uiView: self.view)
             }
         } else {
             DispatchQueue.main.async {
-                self.activity.hide(uiView: self.view)
+                SVProgressHUD.dismiss()
                 ToastView.shared.long(self.view, txt_msg: "No Internet")
             }
             
@@ -111,6 +111,7 @@ extension VideoListViewController {
                 self.videoInfoArray.append(contentsOf: parsedData.data)
                   print("parsedData1", parsedData.data)
                 DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
                     self.videoListTableView.reloadData()
                 }
             }

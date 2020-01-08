@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import SVProgressHUD
 
 class PhotoListViewController: UIViewController {
     
@@ -81,6 +82,7 @@ extension PhotoListViewController : UICollectionViewDelegate, UICollectionViewDa
         if let url = URL(string: photoURL) {
             cell.imageView.layer.cornerRadius = cell.imageView.frame.width/16.0
             cell.imageView.layer.masksToBounds = true
+            cell.imageView.sd_imageIndicator = SDWebImageActivityIndicator.white
             cell.imageView.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
         }
         return cell
@@ -94,7 +96,7 @@ extension PhotoListViewController {
 
         let sender:UIButton = sender as! UIButton
         if segue.identifier == "photoViewer" {
-        let videoPlayerVc = segue.destination as! VideoPlayerVC
+      //  let videoPlayerVc = segue.destination as! VideoPlayerVC
 //        videoPlayerVc.titleLabelText = videoInfoArray[sender.tag].title
 //        videoPlayerVc.descript = videoInfoArray[sender.tag].datumDescription ?? "Description not found"
 //        videoPlayerVc.videoURL = videoInfoArray[sender.tag].youtube
@@ -104,17 +106,15 @@ extension PhotoListViewController {
     func getPhotoByCategory(category: String){
         
         if(Reachability.isConnectedToNetwork()) {
-            
+            SVProgressHUD.show()
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www", "cat_id" : category]
-                self.activity.showLoading(uiView: self.view)
                 APICall.shared.callPost(url: URL(string: API_IMAGE_BY_CATEGORY)!, httpMethodType: "POST", params: param, finish: self.photoByCat)
-                self.activity.hide(uiView: self.view)
             }
         } else {
             DispatchQueue.main.async {
-                self.activity.hide(uiView: self.view)
+                SVProgressHUD.dismiss()
                 ToastView.shared.long(self.view, txt_msg: "No Internet")
             }
             
@@ -134,6 +134,7 @@ extension PhotoListViewController {
                   print("parsedData1", parsedData.data)
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
+                    SVProgressHUD.dismiss()
                 }
             }
         }

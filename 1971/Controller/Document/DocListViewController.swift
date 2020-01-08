@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import SVProgressHUD
 
 class DocListViewController: UIViewController {
     
@@ -43,8 +44,9 @@ extension DocListViewController : UITableViewDelegate, UITableViewDataSource {
         cell.DocAuthor.text = docInforArry[indexPath.row].docAuthor
         let urlString = "\(BasePath)\(docInforArry[indexPath.row].docImgURL)"
         if let url = URL(string: urlString) {
-            //cell.tumbImg.layer.cornerRadius = cell.tumbImg.frame.width/16.0
-            //cell.tumbImg.layer.masksToBounds = true
+            cell.tumbImg.layer.cornerRadius = cell.tumbImg.frame.width/16.0
+            cell.tumbImg.layer.masksToBounds = true
+            cell.tumbImg.sd_imageIndicator = SDWebImageActivityIndicator.white
             cell.tumbImg.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
         }
         return cell
@@ -67,8 +69,8 @@ extension DocListViewController {
         
         let sender:UIButton = sender as! UIButton
         if segue.identifier == "docViewer" {
-        let videoPlayerVc = segue.destination as! VideoPlayerVC
-        videoPlayerVc.titleLabelText = docInforArry[sender.tag].docTitle
+      //  let videoPlayerVc = segue.destination as! VideoPlayerVC
+      //  videoPlayerVc.titleLabelText = docInforArry[sender.tag].docTitle
         //videoPlayerVc.descript = docInforArry[sender.tag].datumDescription ?? "Description not found"
         //videoPlayerVc.videoURL = docInforArry[sender.tag].youtube
         }
@@ -79,17 +81,15 @@ extension DocListViewController {
     func getDocByCategory(category: String){
         
         if(Reachability.isConnectedToNetwork()) {
-            
+            SVProgressHUD.show()
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www", "cat_id" : category]
-                self.activity.showLoading(uiView: self.view)
                 APICall.shared.callPost(url: URL(string: API_DOC_BY_CATEGORY)!, httpMethodType: "POST", params: param, finish: self.videoByCat)
-                self.activity.hide(uiView: self.view)
             }
         } else {
             DispatchQueue.main.async {
-                self.activity.hide(uiView: self.view)
+                SVProgressHUD.dismiss()
                 ToastView.shared.long(self.view, txt_msg: "No Internet")
             }
             
@@ -109,6 +109,7 @@ extension DocListViewController {
                   print("parsedData1", parsedData.data)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                    SVProgressHUD.dismiss()
                 }
             }
         }
