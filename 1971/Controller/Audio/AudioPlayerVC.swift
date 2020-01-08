@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 import SDWebImage
-import SVProgressHUD
+import MBProgressHUD
 
 class AudioPlayerVC: UIViewController {
     
@@ -131,7 +131,7 @@ extension AudioPlayerVC {
         let duration : CMTime = playerItem.asset.duration
         let seconds : Float64 = CMTimeGetSeconds(duration)
         guard !(seconds.isNaN || seconds.isInfinite) else {
-          print("nan")
+            print("nan")
             return  // or some other default string
         }
         let mySecs = Int(seconds) % 60
@@ -157,13 +157,13 @@ extension AudioPlayerVC {
                 }
                 guard !(time.isNaN || time.isInfinite) else {
                     print("nan")
-                   return  // or some other default string
+                    return  // or some other default string
                 }
                 
                 let mySecs2 = Int(time) % 60
                 
                 //if(mySecs2 == 1){//show title of song after 1 second
-                    self.audioTitleLabel.text = self.audioInfoArray[self.index].audioTitle
+                self.audioTitleLabel.text = self.audioInfoArray[self.index].audioTitle
                 //}
                 let myMins2 = Int(time / 60)
                 
@@ -197,7 +197,7 @@ extension AudioPlayerVC {
     func getAudioByCategory(category: String){
         
         if(Reachability.isConnectedToNetwork()) {
-         //  SVProgressHUD.show()
+            MBProgressHUD.showAdded(to: self.view, animated: true)
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www", "page" : "0", "cat_id" : category]
@@ -205,7 +205,7 @@ extension AudioPlayerVC {
             }
         } else {
             DispatchQueue.main.async {
-           //     SVProgressHUD.dismiss()
+                MBProgressHUD.hide(for: self.view, animated: true)
                 ToastView.shared.long(self.view, txt_msg: "No Internet")
             }
             
@@ -225,7 +225,7 @@ extension AudioPlayerVC {
                 print("parsedData1", parsedData.data)
                 DispatchQueue.main.async {
                     self.setPlayer()
-                 //   SVProgressHUD.dismiss()
+                    MBProgressHUD.hide(for: self.view, animated: true)
                 }
                 
             }

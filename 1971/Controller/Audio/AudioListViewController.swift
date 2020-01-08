@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
+import MBProgressHUD
 import SDWebImage
 class AudioListViewController: UIViewController {
 
@@ -74,7 +74,7 @@ extension AudioListViewController {
     func getAudioByCategory(category: String){
         
         if(Reachability.isConnectedToNetwork()) {
-        //    SVProgressHUD.show()
+           MBProgressHUD.showAdded(to: self.view, animated: true)
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www", "page" : "0", "cat_id" : category]
@@ -82,7 +82,7 @@ extension AudioListViewController {
             }
         } else {
             DispatchQueue.main.async {
-             //   SVProgressHUD.dismiss()
+               MBProgressHUD.hide(for: self.view, animated: true)
                 ToastView.shared.long(self.view, txt_msg: "No Internet")
             }
             
@@ -102,7 +102,7 @@ extension AudioListViewController {
                   print("parsedData1", parsedData.data)
                 DispatchQueue.main.async {
                     self.audioListTableView.reloadData()
-                 //   SVProgressHUD.dismiss()
+                   MBProgressHUD.hide(for: self.view, animated: true)
                 }
             }
         }

@@ -8,7 +8,7 @@
 
 import UIKit
 import SDWebImage
-import SVProgressHUD
+import MBProgressHUD
 
 class MainViewController: UIViewController, MenuViewControllerDelegate {
     
@@ -193,7 +193,7 @@ extension MainViewController {
     func getPopularVideoList(){
         
         if(Reachability.isConnectedToNetwork()) {
-         //   SVProgressHUD.show()
+            MBProgressHUD.showAdded(to: self.view, animated: true)
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www", "page" : "0"]
@@ -204,7 +204,7 @@ extension MainViewController {
             }
         } else {
             DispatchQueue.main.async {
-                
+                MBProgressHUD.hide(for: self.view, animated: true)
                 ToastView.shared.long(self.view, txt_msg: "No Internet")
             }
             
@@ -225,7 +225,7 @@ extension MainViewController {
                 DispatchQueue.main.async {
                     self.popularVideoCollectionView.reloadData()
                     self.recentVideoCollectionView.reloadData()
-                 //  SVProgressHUD.dismiss()
+                MBProgressHUD.hide(for: self.view, animated: true)
                 }
                 print("parsedData", parsedData.data)
                 

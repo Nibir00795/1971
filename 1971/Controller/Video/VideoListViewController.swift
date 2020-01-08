@@ -8,7 +8,7 @@
 
 import UIKit
 import SDWebImage
-import SVProgressHUD
+import MBProgressHUD
 
 class VideoListViewController: UIViewController {
     
@@ -84,7 +84,7 @@ extension VideoListViewController {
     func getVideoByCategory(category: String){
         
         if(Reachability.isConnectedToNetwork()) {
-         //   SVProgressHUD.show()
+          MBProgressHUD.showAdded(to: self.view, animated: true)
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www", "page" : "0", "category" : category]
@@ -92,7 +92,7 @@ extension VideoListViewController {
             }
         } else {
             DispatchQueue.main.async {
-             //   SVProgressHUD.dismiss()
+              MBProgressHUD.hide(for: self.view, animated: true)
                 ToastView.shared.long(self.view, txt_msg: "No Internet")
             }
             
@@ -111,7 +111,7 @@ extension VideoListViewController {
                 self.videoInfoArray.append(contentsOf: parsedData.data)
                   print("parsedData1", parsedData.data)
                 DispatchQueue.main.async {
-                 //   SVProgressHUD.dismiss()
+                  MBProgressHUD.hide(for: self.view, animated: true)
                     self.videoListTableView.reloadData()
                 }
             }

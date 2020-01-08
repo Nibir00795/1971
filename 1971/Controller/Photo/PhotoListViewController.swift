@@ -8,7 +8,7 @@
 
 import UIKit
 import SDWebImage
-import SVProgressHUD
+import MBProgressHUD
 
 class PhotoListViewController: UIViewController {
     
@@ -106,7 +106,7 @@ extension PhotoListViewController {
     func getPhotoByCategory(category: String){
         
         if(Reachability.isConnectedToNetwork()) {
-         //   SVProgressHUD.show()
+            MBProgressHUD.showAdded(to: self.view, animated: true)
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www", "cat_id" : category]
@@ -114,7 +114,7 @@ extension PhotoListViewController {
             }
         } else {
             DispatchQueue.main.async {
-             //   SVProgressHUD.dismiss()
+              MBProgressHUD.hide(for: self.view, animated: true)
                 ToastView.shared.long(self.view, txt_msg: "No Internet")
             }
             
@@ -134,7 +134,7 @@ extension PhotoListViewController {
                   print("parsedData1", parsedData.data)
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
-                //    SVProgressHUD.dismiss()
+               MBProgressHUD.hide(for: self.view, animated: true)
                 }
             }
         }
