@@ -1,5 +1,5 @@
 PODS:
-  - IHProgressHUD (0.1.4)
+  - BottomPopup (0.5.5)
   - MBProgressHUD (1.1.0)
   - SDWebImage (5.4.2):
     - SDWebImage/Core (= 5.4.2)
@@ -8,7 +8,7 @@ PODS:
   - YouTubePlayer (0.4.0)
 
 DEPENDENCIES:
-  - IHProgressHUD
+  - BottomPopup
   - MBProgressHUD
   - SDWebImage (~> 5.0)
   - SwipeMenuViewController
@@ -16,19 +16,19 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - IHProgressHUD
+    - BottomPopup
     - MBProgressHUD
     - SDWebImage
     - SwipeMenuViewController
     - YouTubePlayer
 
 SPEC CHECKSUMS:
-  IHProgressHUD: a01846bfbb581c761c79747c67b08387c3bdfae3
+  BottomPopup: c63feed938e7bed2894736d4a07b84cd1f608003
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   SDWebImage: 4ca2dc4eefae4224bea8f504251cda485a363745
   SwipeMenuViewController: c2c1f9b62022ce6b904b2553f0fa340c9008becd
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: 2337b800504ee40aa909c74aca834b1c43df979a
+PODFILE CHECKSUM: e3f69fccc5d63fb7cd26a7c48cbf402d9f8bb0d0
 
 COCOAPODS: 1.8.4

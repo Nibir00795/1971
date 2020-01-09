@@ -45,6 +45,7 @@
 		9652C6E4239D30CC00DE15FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9652C6E2239D30CC00DE15FD /* LaunchScreen.storyboard */; };
 		9652C6EF239D30CD00DE15FD /* _971Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9652C6EE239D30CD00DE15FD /* _971Tests.swift */; };
 		9652C6FA239D30CD00DE15FD /* _971UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9652C6F9239D30CD00DE15FD /* _971UITests.swift */; };
+		96D880BD23C7415200611A16 /* AudioDescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D880BC23C7415200611A16 /* AudioDescriptionVC.swift */; };
 		BA0DD85D23B3E6BF009B496D /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DD85C23B3E6BF009B496D /* CustomView.swift */; };
 		BA53D40B23B47A3800E4290E /* AudioCategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA53D40A23B47A3800E4290E /* AudioCategoryList.swift */; };
 		BA53D40D23B47B1500E4290E /* AudioByCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA53D40C23B47B1500E4290E /* AudioByCategory.swift */; };
@@ -146,6 +147,7 @@
 		9652C717239D33B000DE15FD /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		9652C718239D33B000DE15FD /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		9652C719239D33B000DE15FD /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		96D880BC23C7415200611A16 /* AudioDescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDescriptionVC.swift; sourceTree = "<group>"; };
 		B558EC8FADB75846A2BB0199 /* Pods_1971Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_1971Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B80D06E66C4CD8BDAEA536D1 /* Pods_1971.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_1971.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA0DD85C23B3E6BF009B496D /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 				963A438B23A12DF2003E78DF /* AudioViewController.swift */,
 				9610F65023C370E500ED65F2 /* AudioPlayerVC.swift */,
 				BA98FE0C23B46E1E00121535 /* AudioListViewController.swift */,
+				96D880BC23C7415200611A16 /* AudioDescriptionVC.swift */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -725,6 +728,7 @@
 				963A43B223A14C36003E78DF /* ToastView.swift in Sources */,
 				BAFD30EF23ACC094000D6101 /* CustomImageView.swift in Sources */,
 				963A439A23A134DB003E78DF /* PopularVideoCollectionViewCell.swift in Sources */,
+				96D880BD23C7415200611A16 /* AudioDescriptionVC.swift in Sources */,
 				BAE1C00C23B6125500372DA1 /* DocListViewController.swift in Sources */,
 				963A43B023A14B04003E78DF /* ActivityIndicator.swift in Sources */,
 				BA53D40B23B47A3800E4290E /* AudioCategoryList.swift in Sources */,

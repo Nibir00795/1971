@@ -10,6 +10,7 @@ target '1971' do
 	pod 'YouTubePlayer'
 	pod 'SwipeMenuViewController'
   pod 'MBProgressHUD'
+  pod 'BottomPopup'
 
   target '1971Tests' do
     inherit! :search_paths

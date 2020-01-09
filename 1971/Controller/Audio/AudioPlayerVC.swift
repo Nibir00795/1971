@@ -104,6 +104,16 @@ class AudioPlayerVC: UIViewController {
             player!.play()
         }
     }
+    @IBAction func bottomBtnEvent(_ sender: Any) {
+        guard let popupVC = storyboard?.instantiateViewController(withIdentifier: "descrpVC") as? AudioDescriptionVC else { return }
+        present(popupVC, animated: true, completion: nil)
+        if let dict = audioInfoArray[index] as? AudioInfo{
+        popupVC.titleLabel.text = dict.audioTitle
+        popupVC.descriptionLabel.text = dict.audioDescription
+        }
+      //  popupVC.popupDelegate = self
+        
+    }
 }
 extension AudioPlayerVC {
     

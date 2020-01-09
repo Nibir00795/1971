@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double IHProgressHUDVersionNumber;
-FOUNDATION_EXPORT const unsigned char IHProgressHUDVersionString[];
+FOUNDATION_EXPORT double BottomPopupVersionNumber;
+FOUNDATION_EXPORT const unsigned char BottomPopupVersionString[];
 
