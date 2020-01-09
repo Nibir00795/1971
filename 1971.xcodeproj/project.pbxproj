@@ -56,6 +56,7 @@
 		BA6632D423AD1DF800A3AF31 /* CustomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6632D323AD1DF800A3AF31 /* CustomLayout.swift */; };
 		BA778A1B23B66AB200F34E9F /* DocListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA778A1A23B66AB200F34E9F /* DocListTableViewCell.swift */; };
 		BA98FE0D23B46E1E00121535 /* AudioListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA98FE0C23B46E1E00121535 /* AudioListViewController.swift */; };
+		BAAE895523C64AA50058087A /* PhotoViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAE895423C64AA50058087A /* PhotoViewerVC.swift */; };
 		BAE1C00823B6118700372DA1 /* DocCategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE1C00723B6118700372DA1 /* DocCategoryList.swift */; };
 		BAE1C00A23B6119B00372DA1 /* DocByCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE1C00923B6119B00372DA1 /* DocByCategory.swift */; };
 		BAE1C00C23B6125500372DA1 /* DocListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE1C00B23B6125500372DA1 /* DocListViewController.swift */; };
@@ -158,6 +159,7 @@
 		BA6632D323AD1DF800A3AF31 /* CustomLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLayout.swift; sourceTree = "<group>"; };
 		BA778A1A23B66AB200F34E9F /* DocListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocListTableViewCell.swift; sourceTree = "<group>"; };
 		BA98FE0C23B46E1E00121535 /* AudioListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioListViewController.swift; sourceTree = "<group>"; };
+		BAAE895423C64AA50058087A /* PhotoViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerVC.swift; sourceTree = "<group>"; };
 		BAE1C00723B6118700372DA1 /* DocCategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocCategoryList.swift; sourceTree = "<group>"; };
 		BAE1C00923B6119B00372DA1 /* DocByCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocByCategory.swift; sourceTree = "<group>"; };
 		BAE1C00B23B6125500372DA1 /* DocListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocListViewController.swift; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 			children = (
 				963A438D23A12E05003E78DF /* PhotoViewController.swift */,
 				BA6632CB23AD0A6700A3AF31 /* PhotoListViewController.swift */,
+				BAAE895423C64AA50058087A /* PhotoViewerVC.swift */,
 			);
 			path = Photo;
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 				BA98FE0D23B46E1E00121535 /* AudioListViewController.swift in Sources */,
 				963C3C7223C4A72C00EADE9B /* MenuViewController.swift in Sources */,
 				9652C6D8239D30C800DE15FD /* AppDelegate.swift in Sources */,
+				BAAE895523C64AA50058087A /* PhotoViewerVC.swift in Sources */,
 				963C3C6A23C48ED500EADE9B /* AboutUsViewController.swift in Sources */,
 				BA0DD85D23B3E6BF009B496D /* CustomView.swift in Sources */,
 				963A438A23A12D96003E78DF /* VideoViewController.swift in Sources */,
@@ -935,7 +939,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J27N355HBH;
+				DEVELOPMENT_TEAM = NLMQ56W2VQ;
 				INFOPLIST_FILE = 1971/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -957,7 +961,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J27N355HBH;
+				DEVELOPMENT_TEAM = NLMQ56W2VQ;
 				INFOPLIST_FILE = 1971/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -1,9 +1,9 @@
 PODS:
   - IHProgressHUD (0.1.4)
   - MBProgressHUD (1.1.0)
-  - SDWebImage (5.4.0):
-    - SDWebImage/Core (= 5.4.0)
-  - SDWebImage/Core (5.4.0)
+  - SDWebImage (5.4.2):
+    - SDWebImage/Core (= 5.4.2)
+  - SDWebImage/Core (5.4.2)
   - SwipeMenuViewController (4.0.0)
   - YouTubePlayer (0.4.0)
 
@@ -25,7 +25,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   IHProgressHUD: a01846bfbb581c761c79747c67b08387c3bdfae3
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
-  SDWebImage: 5bf6aec6481ae2a062bdc59f9d6c1d1e552090e0
+  SDWebImage: 4ca2dc4eefae4224bea8f504251cda485a363745
   SwipeMenuViewController: c2c1f9b62022ce6b904b2553f0fa340c9008becd
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 

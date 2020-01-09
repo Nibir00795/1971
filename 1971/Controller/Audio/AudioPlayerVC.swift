@@ -143,7 +143,7 @@ extension AudioPlayerVC {
         playSlider.minimumValue = 0
         playSlider.maximumValue = Float(seconds)
         playSlider.isContinuous = false
-        playSlider.tintColor = UIColor.green
+        playSlider.tintColor = UIColor.black
         
         
         //subroutine used to keep track of current location of time in audio file

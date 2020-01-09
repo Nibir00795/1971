@@ -9,6 +9,7 @@
 import UIKit
 import MBProgressHUD
 import SDWebImage
+import AVFoundation
 class AudioListViewController: UIViewController {
 
     @IBOutlet weak var audioListTableView: UITableView!
@@ -36,8 +37,39 @@ extension AudioListViewController : UITableViewDelegate, UITableViewDataSource {
         cell.audioTitleLabel.text = audioInfoArray[indexPath.row].audioTitle
         cell.audioAuthorLabel.text = audioInfoArray[indexPath.row].audioDescription
         //cell.videoTimeLabel.text = Converter.timeString(time: TimeInterval(Int(audioInfoArray[indexPath.row].d)!))
+        
+        
+        
+        
+        // audio duration
+        var startURL = "\(imgBasePath)\(audioInfoArray[indexPath.row].audioURL)"
+        let url = URL(string: startURL)
+        let playerItem:AVPlayerItem = AVPlayerItem(url: url!)
+        var player:AVPlayer?
+        player = AVPlayer(playerItem: playerItem)
+        
+        
+        
+        let duration : CMTime = playerItem.asset.duration
+        let seconds : Float64 = CMTimeGetSeconds(duration)
+//        guard !(seconds.isNaN || seconds.isInfinite) else {
+//            return  // or some other default string
+//        }
+        if !(seconds.isNaN || seconds.isInfinite) {
+            let mySecs = Int(seconds) % 60
+            let myMins = Int(seconds / 60)
+            let myTimes = String(myMins) + ":" + String(mySecs);
+
+            cell.audioDuration.text = myTimes;
+        } else {
+            cell.audioDuration.text = "0:0"
+        }
+        
         let urlString = "\(imgBasePath)\(audioInfoArray[indexPath.row].audioImg)"
         if let url = URL(string: urlString) {
+            
+            
+            
             cell.audioThumbImage.layer.cornerRadius = cell.audioThumbImage.frame.width/16.0
             cell.audioThumbImage.layer.masksToBounds = true
             cell.audioThumbImage.sd_imageIndicator = SDWebImageActivityIndicator.white

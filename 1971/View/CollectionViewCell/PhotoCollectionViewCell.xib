@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ONK-4p-reF">
-                        <rect key="frame" x="5" y="5" width="45" height="40"/>
+                        <rect key="frame" x="5" y="5" width="40" height="40"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
                                 <real key="value" value="2"/>
@@ -43,7 +43,7 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="ONK-4p-reF" secondAttribute="trailing" id="QMM-WM-nKx"/>
+                <constraint firstAttribute="trailing" secondItem="ONK-4p-reF" secondAttribute="trailing" constant="5" id="QMM-WM-nKx"/>
                 <constraint firstItem="ONK-4p-reF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="YdK-SH-yvc"/>
                 <constraint firstItem="ONK-4p-reF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="tRX-BX-bfT"/>
                 <constraint firstAttribute="bottom" secondItem="ONK-4p-reF" secondAttribute="bottom" constant="5" id="u8W-Lw-ulB"/>

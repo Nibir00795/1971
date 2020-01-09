@@ -54,7 +54,7 @@ extension PhotoListViewController : UICollectionViewDelegate, UICollectionViewDa
             let lineSpacing: CGFloat = 5
             let interItemSpacing: CGFloat = 1
             //let width = (collectionView.frame.width - (numberOfitemForRow - 1) * interItemSpacing) / numberOfitemForRow
-            let width = (view.frame.width / 2.0) - 5
+            let width = (collectionView.frame.width / 2.0) - 10
             let height = width
             collectionViewFlowLayout = UICollectionViewFlowLayout()
             
@@ -87,6 +87,12 @@ extension PhotoListViewController : UICollectionViewDelegate, UICollectionViewDa
         }
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let sender:UIButton = UIButton()
+        sender.tag = indexPath.row
+        self.performSegue(withIdentifier: "photoViewer", sender: sender)
+    }
 }
 
 
@@ -96,8 +102,10 @@ extension PhotoListViewController {
 
         let sender:UIButton = sender as! UIButton
         if segue.identifier == "photoViewer" {
-      //  let videoPlayerVc = segue.destination as! VideoPlayerVC
-//        videoPlayerVc.titleLabelText = videoInfoArray[sender.tag].title
+        let photoViewerVC = segue.destination as! PhotoViewerVC
+            
+            photoViewerVC.imageURL = photoInfoArray[sender.tag].imgURL
+        //videoPlayerVc.titleLabelText = videoInfoArray[sender.tag].title
 //        videoPlayerVc.descript = videoInfoArray[sender.tag].datumDescription ?? "Description not found"
 //        videoPlayerVc.videoURL = videoInfoArray[sender.tag].youtube
         }

@@ -9,7 +9,7 @@
 import Foundation
 var basePath                                              = "http://glazeitsolutions.com" // SERVER
 
-
+public let API_POPULAR_VIDEO                            = "\(basePath)/admin/public/api/video/featured.php"
 
 public let API_RECENT_VIDEO                            = "\(basePath)/admin/public/api/video/recent.php"
 

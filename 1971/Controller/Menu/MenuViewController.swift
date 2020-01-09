@@ -73,7 +73,7 @@ extension MenuViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MenuTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! MenuTableViewCell
         cell.cellLabel.text = itemNameArray[indexPath.row]
         cell.cellLabel.textColor = UIColor.black
         cell.backgroundColor = UIColor.white
