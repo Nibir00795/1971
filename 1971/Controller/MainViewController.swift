@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 import MBProgressHUD
 
-class MainViewController: UIViewController, MenuViewControllerDelegate {
+class MainViewController: UIViewController, MenuViewControllerDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var popularVideoCollectionView: UICollectionView!
     @IBOutlet weak var recentVideoCollectionView: UICollectionView!
@@ -18,6 +18,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
     @IBOutlet weak var photoView: CardView!
     @IBOutlet weak var audioView: CardView!
     @IBOutlet weak var docView: CardView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var videoTitleArray = [String]()
     var videoTimeArray = [String]()
@@ -26,7 +27,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
     let imgBasePath = "http://glazeitsolutions.com/admin/public/uploads/"
     var tapIndex = Int()
     var blurView = UIView()
-    var menuViewController = MenuViewController()
+    var menuViewController = SideMenuViewController()
     let activity = ActivityIndicator()
     
     override func viewDidLoad() {
@@ -41,7 +42,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
         photoView.addGestureRecognizer(tapGesturePhoto)
         audioView.addGestureRecognizer(tapGestureAudio)
         docView.addGestureRecognizer(tapGestureDoc)
-        
+        createSlideMenu()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +73,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
             performSegue(withIdentifier: "photoVC", sender: UIButton())
         
     }
+    
     @IBAction func menuButtonEventListener(_ sender: Any) {
         
         if #available(iOS 13.0, *) {
@@ -85,10 +87,14 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
         }
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)  {
+        searchBar.resignFirstResponder()
+    }
+    
     func createSlideMenu () {
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        menuViewController = mainStoryboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        menuViewController = mainStoryboard.instantiateViewController(withIdentifier: "SideMenuViewController") as! SideMenuViewController
         self.menuViewController.view.frame = CGRect(x: -UIScreen.main.bounds.width, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         menuViewController.delegateManager = self
         

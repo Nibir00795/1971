@@ -29,7 +29,7 @@
 		963C3C6C23C48EE800EADE9B /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963C3C6B23C48EE800EADE9B /* ContactUsViewController.swift */; };
 		963C3C6E23C48EF900EADE9B /* RateUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963C3C6D23C48EF900EADE9B /* RateUsViewController.swift */; };
 		963C3C7023C48F0C00EADE9B /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963C3C6F23C48F0C00EADE9B /* PrivacyViewController.swift */; };
-		963C3C7223C4A72C00EADE9B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963C3C7123C4A72C00EADE9B /* MenuViewController.swift */; };
+		963C3C7223C4A72C00EADE9B /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963C3C7123C4A72C00EADE9B /* SideMenuViewController.swift */; };
 		963C3C7423C4ACE200EADE9B /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963C3C7323C4ACE200EADE9B /* MenuTableViewCell.swift */; };
 		964281CC23A2710E005E865D /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964281CB23A2710E005E865D /* Converter.swift */; };
 		964281CE23A27C2D005E865D /* VideoPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964281CD23A27C2D005E865D /* VideoPlayerVC.swift */; };
@@ -107,7 +107,7 @@
 		963C3C6B23C48EE800EADE9B /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		963C3C6D23C48EF900EADE9B /* RateUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateUsViewController.swift; sourceTree = "<group>"; };
 		963C3C6F23C48F0C00EADE9B /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
-		963C3C7123C4A72C00EADE9B /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		963C3C7123C4A72C00EADE9B /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		963C3C7323C4ACE200EADE9B /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		964281CB23A2710E005E865D /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		964281CD23A27C2D005E865D /* VideoPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerVC.swift; sourceTree = "<group>"; };
@@ -301,7 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				963C3C6923C48ED500EADE9B /* AboutUsViewController.swift */,
-				963C3C7123C4A72C00EADE9B /* MenuViewController.swift */,
+				963C3C7123C4A72C00EADE9B /* SideMenuViewController.swift */,
 				963C3C6B23C48EE800EADE9B /* ContactUsViewController.swift */,
 				963C3C6D23C48EF900EADE9B /* RateUsViewController.swift */,
 				963C3C6F23C48F0C00EADE9B /* PrivacyViewController.swift */,
@@ -735,7 +735,7 @@
 				BAE1C00A23B6119B00372DA1 /* DocByCategory.swift in Sources */,
 				963A43A723A144D5003E78DF /* APIList.swift in Sources */,
 				BA98FE0D23B46E1E00121535 /* AudioListViewController.swift in Sources */,
-				963C3C7223C4A72C00EADE9B /* MenuViewController.swift in Sources */,
+				963C3C7223C4A72C00EADE9B /* SideMenuViewController.swift in Sources */,
 				9652C6D8239D30C800DE15FD /* AppDelegate.swift in Sources */,
 				BAAE895523C64AA50058087A /* PhotoViewerVC.swift in Sources */,
 				963C3C6A23C48ED500EADE9B /* AboutUsViewController.swift in Sources */,
@@ -939,7 +939,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NLMQ56W2VQ;
+				DEVELOPMENT_TEAM = J27N355HBH;
 				INFOPLIST_FILE = 1971/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -961,7 +961,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NLMQ56W2VQ;
+				DEVELOPMENT_TEAM = J27N355HBH;
 				INFOPLIST_FILE = 1971/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (

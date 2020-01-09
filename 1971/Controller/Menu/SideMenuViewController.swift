@@ -20,7 +20,7 @@ protocol MenuViewControllerDelegate {
     
 }
 
-class MenuViewController: UIViewController {
+class SideMenuViewController: UIViewController {
     
     
     @IBOutlet weak var leftMenuTableView: UITableView!
@@ -51,7 +51,7 @@ class MenuViewController: UIViewController {
     
 }
 
-extension MenuViewController {
+extension SideMenuViewController {
     
     func setUpView()  {
         
@@ -60,12 +60,12 @@ extension MenuViewController {
         leftMenuTableView.dataSource = self
         leftMenuTableView.layer.zPosition = 1
         self.leftMenuTableView.rowHeight = UITableView.automaticDimension;
-        leftMenuTableView.separatorColor = UIColor(hex : 0x000000)
+       // leftMenuTableView.separatorColor = UIColor(hex : 0x000000)
         leftMenuTableView.tableFooterView = UIView()
     }
 }
 
-extension MenuViewController : UITableViewDelegate, UITableViewDataSource {
+extension SideMenuViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemNameArray.count
@@ -75,8 +75,8 @@ extension MenuViewController : UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! MenuTableViewCell
         cell.cellLabel.text = itemNameArray[indexPath.row]
-        cell.cellLabel.textColor = UIColor.black
-        cell.backgroundColor = UIColor.white
+       // cell.cellLabel.textColor = UIColor.black
+      //  cell.backgroundColor = UIColor.white
         cell.selectionStyle = .none
         
         return cell
@@ -91,15 +91,15 @@ extension MenuViewController : UITableViewDelegate, UITableViewDataSource {
             
         if indexPath.row == 0 {
             self.delegateManager?.leftMenuCellClicked()
-            self.performSegue(withIdentifier: "aboutUs", sender: nil)
+            self.performSegue(withIdentifier: "about", sender: nil)
             
         } else if indexPath.row == 1 {
             self.delegateManager?.leftMenuCellClicked()
-            self.performSegue(withIdentifier: "contactUs", sender: nil)
+            self.performSegue(withIdentifier: "contact", sender: nil)
             
         } else if indexPath.row == 2 {
             self.delegateManager?.leftMenuCellClicked()
-            UserDefaults.standard.set(nil, forKey: "rateUs")
+            UserDefaults.standard.set(nil, forKey: "rate")
             
         } else if indexPath.row == 3 {
             self.delegateManager?.leftMenuCellClicked()

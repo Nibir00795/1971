@@ -27,4 +27,8 @@ class ContactUsViewController: UIViewController {
     }
     */
 
+    @IBAction func backBtnEvent(_ sender: Any) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
 }
