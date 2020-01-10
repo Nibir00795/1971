@@ -42,11 +42,11 @@ extension AudioListViewController : UITableViewDelegate, UITableViewDataSource {
         
         
         // audio duration
-        var startURL = "\(imgBasePath)\(audioInfoArray[indexPath.row].audioURL)"
+        let startURL = "\(imgBasePath)\(audioInfoArray[indexPath.row].audioURL)"
         let url = URL(string: startURL)
         let playerItem:AVPlayerItem = AVPlayerItem(url: url!)
-        var player:AVPlayer?
-        player = AVPlayer(playerItem: playerItem)
+        //var player:AVPlayer?
+        //player = AVPlayer(playerItem: playerItem)
         
         
         
@@ -71,7 +71,12 @@ extension AudioListViewController : UITableViewDelegate, UITableViewDataSource {
             
             
             cell.audioThumbImage.layer.cornerRadius = cell.audioThumbImage.frame.width/16.0
+            
+            cell.audioThumbImage.layer.shadowRadius = 15
+            
             cell.audioThumbImage.layer.masksToBounds = true
+            
+            
             cell.audioThumbImage.sd_imageIndicator = SDWebImageActivityIndicator.white
             cell.audioThumbImage.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
         }

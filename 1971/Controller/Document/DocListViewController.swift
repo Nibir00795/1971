@@ -56,10 +56,6 @@ extension DocListViewController : UITableViewDelegate, UITableViewDataSource {
         sender.tag = indexPath.row
         self.performSegue(withIdentifier: "docViewer", sender: sender)
     }
-    
-    
-    
-    
 }
 
 
@@ -69,10 +65,12 @@ extension DocListViewController {
         
         let sender:UIButton = sender as! UIButton
         if segue.identifier == "docViewer" {
-      //  let videoPlayerVc = segue.destination as! VideoPlayerVC
-      //  videoPlayerVc.titleLabelText = docInforArry[sender.tag].docTitle
-        //videoPlayerVc.descript = docInforArry[sender.tag].datumDescription ?? "Description not found"
-        //videoPlayerVc.videoURL = docInforArry[sender.tag].youtube
+        let docViewerVC = segue.destination as! DocViewerVC
+            
+            docViewerVC.docTitleTxt = docInforArry[sender.tag].docTitle
+            docViewerVC.authoeNameTxt = docInforArry[sender.tag].docAuthor
+            docViewerVC.docUrl = docInforArry[sender.tag].docFileURL
+            docViewerVC.docImageURL = docInforArry[sender.tag].docImgURL
         }
         
         
@@ -85,7 +83,7 @@ extension DocListViewController {
             DispatchQueue.main.async {
                 
                 let param = ["api_token" : "www", "cat_id" : category]
-                APICall.shared.callPost(url: URL(string: API_DOC_BY_CATEGORY)!, httpMethodType: "POST", params: param, finish: self.videoByCat)
+                APICall.shared.callPost(url: URL(string: API_DOC_BY_CATEGORY)!, httpMethodType: "POST", params: param, finish: self.docByCat)
             }
         } else {
             DispatchQueue.main.async {
@@ -96,7 +94,7 @@ extension DocListViewController {
             
         }
     }
-    func videoByCat (message:String, data:Data?) -> Void
+    func docByCat (message:String, data:Data?) -> Void
     {
         do
         {

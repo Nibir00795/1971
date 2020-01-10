@@ -14,6 +14,9 @@ class PhotoViewerVC: UIViewController {
     @IBOutlet weak var photoViewer: UIImageView!
     let imgBasePath = "http://glazeitsolutions.com/admin/public/uploads/"
     var imageURL = String()
+    var imgTitle = String()
+    var imgDes = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +26,13 @@ class PhotoViewerVC: UIViewController {
             photoViewer.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
             photoViewer.enableZoom()
         }
+    }
+    @IBAction func DescBtn(_ sender: Any) {
+        guard let popupVC = storyboard?.instantiateViewController(withIdentifier: "PhotoDescriptionVC") as? PhotoDescriptionVC else { return }
+             present(popupVC, animated: true, completion: nil)
+             
+             popupVC.titleLabel.text = imgTitle
+             popupVC.descriptionLabel.text = imgDes
     }
     
     @IBAction func BackBtnPressed(_ sender: Any) {

@@ -80,7 +80,7 @@ extension PhotoListViewController : UICollectionViewDelegate, UICollectionViewDa
         let photoURL = "\(imgBasePath)\(photoInfoArray[indexPath.row].imgURL)"
         
         if let url = URL(string: photoURL) {
-            cell.imageView.layer.cornerRadius = cell.imageView.frame.width/16.0
+            cell.imageView.layer.cornerRadius = cell.imageView.frame.width/25.0
             cell.imageView.layer.masksToBounds = true
             cell.imageView.sd_imageIndicator = SDWebImageActivityIndicator.white
             cell.imageView.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
@@ -105,9 +105,8 @@ extension PhotoListViewController {
         let photoViewerVC = segue.destination as! PhotoViewerVC
             
             photoViewerVC.imageURL = photoInfoArray[sender.tag].imgURL
-        //videoPlayerVc.titleLabelText = videoInfoArray[sender.tag].title
-//        videoPlayerVc.descript = videoInfoArray[sender.tag].datumDescription ?? "Description not found"
-//        videoPlayerVc.videoURL = videoInfoArray[sender.tag].youtube
+            photoViewerVC.imgTitle = photoInfoArray[sender.tag].imgTitle
+            photoViewerVC.imgDes = photoInfoArray[sender.tag].imgDesc
         }
     }
     

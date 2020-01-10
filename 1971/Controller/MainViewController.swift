@@ -23,6 +23,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate, UISearch
     var videoTitleArray = [String]()
     var videoTimeArray = [String]()
     var itemArray = [PopularVideoSingle]()
+    var itemArrayRecent = [PopularVideoSingle]()
     var displayImg = UIImage()
     let imgBasePath = "http://glazeitsolutions.com/admin/public/uploads/"
     var tapIndex = Int()
@@ -34,6 +35,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate, UISearch
         super.viewDidLoad()
         
         getPopularVideoList()
+        getRecentVideoList()
         let tapGestureVideo =  UITapGestureRecognizer(target: self, action: #selector (videoAction(sender:)))
         let tapGestureAudio =  UITapGestureRecognizer(target: self, action: #selector (audioAction(sender:)))
         let tapGestureDoc =  UITapGestureRecognizer(target: self, action: #selector (docAction(sender:)))
@@ -44,6 +46,11 @@ class MainViewController: UIViewController, MenuViewControllerDelegate, UISearch
         docView.addGestureRecognizer(tapGestureDoc)
         createSlideMenu()
     }
+    
+    
+    
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -196,7 +203,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate, UISearch
 extension MainViewController {
     
     
-    func getPopularVideoList(){
+    func getRecentVideoList(){
         
         if(Reachability.isConnectedToNetwork()) {
             MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -204,7 +211,7 @@ extension MainViewController {
                 
                 let param = ["api_token" : "www", "page" : "0"]
                 
-                APICall.shared.callPost(url: URL(string: API_RECENT_VIDEO)!, httpMethodType: "POST", params: param, finish: self.finishPost)
+                APICall.shared.callPost(url: URL(string: API_RECENT_VIDEO)!, httpMethodType: "POST", params: param, finish: self.finishPostRecent)
                 
                 
             }
@@ -217,6 +224,57 @@ extension MainViewController {
             
         }
     }
+    func getPopularVideoList(){
+        
+        if(Reachability.isConnectedToNetwork()) {
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+            DispatchQueue.main.async {
+                
+                let param = ["api_token" : "www", "page" : "0"]
+                
+                APICall.shared.callPost(url: URL(string: API_POPULAR_VIDEO)!, httpMethodType: "POST", params: param, finish: self.finishPost)
+                
+                
+            }
+        } else {
+            DispatchQueue.main.async {
+                MBProgressHUD.hide(for: self.view, animated: true)
+                ToastView.shared.long(self.view, txt_msg: "No Internet")
+            }
+            
+            
+        }
+    }
+    
+    
+    
+    func finishPostRecent (message:String, data:Data?) -> Void
+    {
+        
+        do
+        {
+            if let jsonData = data
+                
+            {
+                print("jsondata", jsonData)
+                let parsedData = try JSONDecoder().decode(PopularVideoList.self, from: jsonData)
+                self.itemArrayRecent.append(contentsOf: parsedData.data)
+                DispatchQueue.main.async {
+                    //self.popularVideoCollectionView.reloadData()
+                    self.recentVideoCollectionView.reloadData()
+                MBProgressHUD.hide(for: self.view, animated: true)
+                }
+                print("parsedData", parsedData.data)
+                
+            }
+        }
+        catch
+        {
+            print("Parse Error: \(error)")
+        }
+    }
+    
+    
     func finishPost (message:String, data:Data?) -> Void
     {
         
@@ -230,7 +288,7 @@ extension MainViewController {
                 self.itemArray.append(contentsOf: parsedData.data)
                 DispatchQueue.main.async {
                     self.popularVideoCollectionView.reloadData()
-                    self.recentVideoCollectionView.reloadData()
+                    //self.recentVideoCollectionView.reloadData()
                 MBProgressHUD.hide(for: self.view, animated: true)
                 }
                 print("parsedData", parsedData.data)
@@ -273,7 +331,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return itemArray.count
         }
         
-        return itemArray.count
+        return itemArrayRecent.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -292,9 +350,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         else {
             let cellB = collectionView.dequeueReusableCell(withReuseIdentifier: "recentCell", for: indexPath) as! RecentVideoCollectionViewCell
             
-            cellB.videoTitleLabel.text = itemArray[indexPath.row].title
-            cellB.videoTimeLabel.text = Converter.timeString(time: TimeInterval(Int(itemArray[indexPath.row].duration)!))
-            let urlString = "\(imgBasePath)\(itemArray[indexPath.row].imageName)"
+            cellB.videoTitleLabel.text = itemArrayRecent[indexPath.row].title
+            cellB.videoTimeLabel.text = Converter.timeString(time: TimeInterval(Int(itemArrayRecent[indexPath.row].duration)!))
+            let urlString = "\(imgBasePath)\(itemArrayRecent[indexPath.row].imageName)"
             if let url = URL(string: urlString) {
                 cellB.videoImg.sd_imageIndicator = SDWebImageActivityIndicator.white
                 cellB.videoImg.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))            }

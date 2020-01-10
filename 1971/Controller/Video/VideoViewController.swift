@@ -121,5 +121,4 @@ extension VideoViewController {
             print("Parse Error: \(error)")
         }
     }
-    
 }
