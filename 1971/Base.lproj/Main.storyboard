@@ -1574,7 +1574,7 @@
                                 <rect key="frame" x="82.666666666666657" y="0.0" width="331.33333333333337" height="160"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="SWn-4y-9LP">
-                                        <rect key="frame" x="125.66666666666669" y="40" width="80" height="80"/>
+                                        <rect key="frame" x="125.66666666666669" y="40" width="80" height="80.000000000000028"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="K2d-y1-Wpm"/>
                                             <constraint firstAttribute="width" constant="80" id="ZlP-eX-kh6"/>
@@ -1943,7 +1943,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="q8l-j3-CAb" firstAttribute="bottom" secondItem="oS7-N9-tPk" secondAttribute="bottom" id="096-2a-mCy"/>
                             <constraint firstItem="kpT-Nw-2Z0" firstAttribute="leading" secondItem="oS7-N9-tPk" secondAttribute="leading" constant="20" id="GLX-pR-ff9"/>
